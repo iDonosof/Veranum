@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Numero de habitación</th>
+      <th scope="col">Cantidad camas</th>
+      <th scope="col">Capacidad</th>
+      <th scope="col">Cantidad baños</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Habitacion of Habitaciones">
+      <th scope="row" >{{Habitacion.ID}}</th>
+      <td>{{Habitacion.NUMERO}}</td>
+      <td>{{Habitacion.CAMAS}}</td>
+      <td>{{Habitacion.CAPACIDAD}}</td>
+      <td>{{Habitacion.BANOS}}</td>
+    </tr>
+  </tbody>
+</table>

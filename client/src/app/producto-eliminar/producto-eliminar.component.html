@@ -1,0 +1,9 @@
+<form [formGroup]="productoEliminarForm" (ngSubmit)="EliminarProducto()">
+    <div class="form-group">
+        <label for="idProducto">Producto</label>
+        <select name="idProducto" id="idProducto" formControlName="idProducto" class="form-control">
+            <option *ngFor="let Producto of Productos" value={{Producto.ID}}>{{Producto.NOMBRE}}</option>
+        </select>
+    </div>
+    <input type="submit" value="Eliminar" class="form-control">
+</form>

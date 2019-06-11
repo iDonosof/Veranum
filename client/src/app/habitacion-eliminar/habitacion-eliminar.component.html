@@ -1,0 +1,15 @@
+<form [formGroup]="EliminarForm" (ngSubmit)="Eliminar()">
+  <div class="form-group">
+    <label for="hotel">Hoteles</label>
+    <select class="form-control" id="hotel" formControlName="hotelId" (change)="HotelChanged($event.target.value)">
+      <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="habitacion">Habitaciones</label>
+    <select class="form-control" id="habitacion" formControlName="habitacionId">
+      <option *ngFor="let Habitacion of HabitacionesPorHotel" value={{Habitacion.ID}}>{{Habitacion.NUMERO}}</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Eliminar">
+</form>

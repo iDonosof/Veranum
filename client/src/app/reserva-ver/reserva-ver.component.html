@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID reserva</th>
+      <th scope="col">Habitacion reservada</th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha termino</th>
+      <th scope="col">Total</th>
+      <th scope="col">Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Reserva of Reservas">
+      <th scope="row">{{Reserva.ID}}</th>
+      <td>{{Reserva.HABITACIONID}}</td>
+      <td>{{Reserva.FECHA_INICIO}}</td>
+      <td>{{Reserva.FECHA_TERMINO}}</td>
+      <td>{{Reserva.TOTAL}}</td>
+      <td>{{Reserva.USUARIOID}}</td>
+    </tr>
+  </tbody>
+</table>

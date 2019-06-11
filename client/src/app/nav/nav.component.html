@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" *ngIf="username != null && username != undefined">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Inicio <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Habitaciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="HabitacionLista">Ver habitaciones</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="HabitacionInsertar">Agregar habitación</a>
+          <a class="dropdown-item" routerLink="HabitacionActualizar">Editar habitación</a>
+          <a class="dropdown-item" routerLink="HabitacionEliminar">Eliminar habitación</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="ProductoVer">Ver productos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="ProductoInsertar">Agregar productos</a>
+          <a class="dropdown-item" routerLink="ProductoActualizar">Editar productos</a>
+          <a class="dropdown-item" routerLink="ProductoEliminar">Eliminar productos</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reservas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="ReservaVer">Ver reservas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="ReservaInsertar">Agregar reservas</a>
+          <a class="dropdown-item" routerLink="ReservaActualizar">Editar reservas</a>
+          <a class="dropdown-item" routerLink="ReservaEliminar">Eliminar reservas</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuario
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="UsuarioVer">Ver Usuarios</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="UsuarioInsertar">Agregar usuario</a>
+          <a class="dropdown-item" routerLink="UsuarioActualizar">Editar usuario</a>
+          <a class="dropdown-item" routerLink="UsuarioEliminar">Eliminar usuario</a>
+        </div>
+      </li>
+      
+    </ul>
+    <div *ngIf="username == null || username == undefined">
+      <span class="navbar-text">
+        <a routerLink="Login">Login</a>
+      </span>
+      <span class="navbar-text">
+        <a routerLink="Signup">Registrarse</a>
+      </span>
+    </div>
+    <span class="navbar-text" *ngIf="username != null && username != undefined">
+      {{ username }}
+    </span>
+    <span class="navbar-text" *ngIf="username != null && username != undefined">
+        <button (click)="CerrarSesion()">Cerrar Sesion</button>
+    </span>
+    <span class="navbar-text">
+      Valor USD Hoy: {{ usd }}
+    </span>
+    <!-- <span class="navbar-text">
+      Clima Hoy: {{ usd }}
+    </span> -->
+  </div>
+</nav>

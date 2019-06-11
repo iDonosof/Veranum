@@ -1,0 +1,29 @@
+<form [formGroup]="InsertarProductoForm" (ngSubmit)="InsertarProducto()">
+  <div class="form-group">
+    <label for="nombre">Nombre del producto</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar nombre del producto" formControlName="nombre">
+  </div>
+  <div class="form-group">
+    <label for="descripcion">Descripción del producto</label>
+    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresar descripcion del producto" formControlName="descripcion">
+  </div>
+  <div class="form-group">
+    <label for="stockTotal">Stock total del producto</label>
+    <input type="text" class="form-control" id="stockTotal" name="stockTotal" placeholder="Ingresar el stock total del producto" formControlName="stockTotal">
+  </div>
+  <div class="form-group">
+    <label for="stockDisponible">Stock disponible</label>
+    <input type="text" class="form-control" id="stockDisponible" name="stockDisponible" placeholder="Ingresar el stock disponible del producto" formControlName="stockDisponible">
+  </div>
+  <div class="form-group">
+    <label for="ubicacion">Ubicación del producto</label>
+    <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Ingresar ubicación del producto" formControlName="ubicacion">
+  </div>
+  <div class="form-group">
+    <label for="hotel">Hotel</label>
+    <select name="hotel" id="hotel" formControlName="hotel" class="form-control">
+      <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Ingresar">
+</form>
