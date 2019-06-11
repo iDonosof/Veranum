@@ -1,0 +1,2237 @@
+{
+	"info": {
+		"_postman_id": "7ed67c67-d43b-4849-ada9-9d764f2e288e",
+		"name": "Webservice Veranum",
+		"description": "web service servicio hotelero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "/crearUsuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "18732997",
+									"description": "rut del usuario",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "jorge francisco",
+									"description": "nombre del usuario",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "corvalan mendez",
+									"description": "apellido del usuario",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+56985067877",
+									"description": "telefono del usuario ",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "andes 3755 casa 25",
+									"description": "direccion del usuario",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "higlord@gmail.com",
+									"description": "correo del usuario",
+									"type": "text"
+								},
+								{
+									"key": "nombreUsuario",
+									"value": "higlord",
+									"description": "nombre del usuario en el sistema",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123",
+									"description": "contraseña del usuario",
+									"type": "text"
+								},
+								{
+									"key": "empresaid",
+									"value": "0",
+									"description": "empresa a la que pertenece",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarUsuario ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "18732997",
+									"description": "rut del usuario",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "jorge fracisce",
+									"description": "nombre del usuario",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "corvalan mendez",
+									"description": "apellido del usuario",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+56985067877",
+									"description": "telefono del usuario ",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "andes 3755 casa 25",
+									"description": "direccion del usuario",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "higlord@gmail.com",
+									"description": "correo del usuario",
+									"type": "text"
+								},
+								{
+									"key": "nombreUsuario",
+									"value": "higlord",
+									"description": "nombre del usuario en el sistema",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123",
+									"description": "contraseña del usuario",
+									"type": "text"
+								},
+								{
+									"key": "empresaid",
+									"value": "0",
+									"description": "empresa a la que pertenece",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoUsuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "18732997",
+									"description": "rut del usuario",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"description": "estado de la cuenta activo o inactivo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerUsuarioPorId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "18732997",
+									"description": "rut del usuario",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerUsuarioPorId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerUsuarioPorId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerUsuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerUsuarios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerUsuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombreUsuario",
+									"value": "higlord",
+									"description": "nombre de usuario ",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123",
+									"description": "contraseña del usuario",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "empresa",
+			"item": [
+				{
+					"name": "/crearEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "19732997",
+									"description": "rut de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "maddevs ",
+									"description": "nombre de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "tusca",
+									"description": "direccion de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+569555555555",
+									"description": "telefono",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearEmpresa",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "19732997",
+									"description": "rut de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "maddevs ",
+									"description": "nombre de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "tusca con misco",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+569555555555",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEmpresa",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "19732997",
+									"description": "rut de la empresa",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"description": "estado de la empresa activo o inactivo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoEmpresa",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerEmpresas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerEmpresas",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerEmpresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerEmpresasPorId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rut",
+									"value": "19732997",
+									"description": "rut de la empresa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerEmpresaPorId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerEmpresaPorId"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hotel",
+			"item": [
+				{
+					"name": "/crearHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "direccion",
+									"value": "andes 3755 casa 22",
+									"description": "direccion de la hotel",
+									"type": "text"
+								},
+								{
+									"key": "region",
+									"value": "metropolitana",
+									"description": "region de la hotel",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+56985067878",
+									"description": "telefono de le hotel",
+									"type": "text"
+								},
+								{
+									"key": "administrador",
+									"value": "0",
+									"description": "administrador del hotel",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearHotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actulizarHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "id del hotel",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "andes 3755 casa 24",
+									"description": "direccion del hotel",
+									"type": "text"
+								},
+								{
+									"key": "region",
+									"value": "metropolitana",
+									"description": "region del hotel",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "+56985067878",
+									"description": "telefono del hotel",
+									"type": "text"
+								},
+								{
+									"key": "administrador",
+									"value": "18732997",
+									"description": "administrador del hotel",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarHotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actulizarEstadoHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "id del hotel",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"description": "estado del hotel activo o no",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoHotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerHotelPorId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"description": "id del hotel",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerHotelPorId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerHotelPorId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerHoteles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerHoteles",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerHoteles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "producto",
+			"item": [
+				{
+					"name": "/crearProducto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "pelota",
+									"description": "nombre del producto",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "es una pelota",
+									"description": "descripcion del producto",
+									"type": "text"
+								},
+								{
+									"key": "stockTotal",
+									"value": "10",
+									"description": "stock total del producto",
+									"type": "text"
+								},
+								{
+									"key": "stockDisponible",
+									"value": "10",
+									"description": "stock disponible para prestamos del producto",
+									"type": "text"
+								},
+								{
+									"key": "ubicacion",
+									"value": "en mueble 3",
+									"description": "ubicacion del producto",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel al que pertenece el producto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearProducto",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarProducto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id del producto",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "pelota",
+									"description": "nombre del producto",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "es una pelota",
+									"description": "descripcion del producto",
+									"type": "text"
+								},
+								{
+									"key": "stockTotal",
+									"value": "10",
+									"description": "stock total del producto",
+									"type": "text"
+								},
+								{
+									"key": "stockDisponible",
+									"value": "10",
+									"description": "stock disponible para prestamos del producto",
+									"type": "text"
+								},
+								{
+									"key": "ubicacion",
+									"value": "en mueble 3",
+									"description": "ubicacion del producto",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel al que pertenece el producto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarProducto",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoProducto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id del producto",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"description": "estaado del producto ativo o no",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoProducto",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerProductosPorHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "id del producto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerProductosPorHotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerProductosPorHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerProductoPorId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id del producto",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerProductoPorId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerProductoPorId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerProductos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerProductos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerProductos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "servicio",
+			"item": [
+				{
+					"name": "/crearServicio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "piscina",
+									"description": "nombre del servicio",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "piscina temperada",
+									"description": "descripcion del servicio",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel a cual pertenece",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearServicio",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearServicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarServicio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id del servicio",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "piscina",
+									"description": "nombre del servicio",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "piscina temperada",
+									"description": "descripcion del servicio",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel a cual pertenece",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarServicio",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarServicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoServicio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id del servicio",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "0",
+									"description": "estado del servicio",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoServicio",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoServicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerServiciosPorHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "id del hotel ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerServiciosPorHotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerServiciosPorHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerServicios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerServicios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerServicios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "habitacion",
+			"item": [
+				{
+					"name": "/crearHabitacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "numero",
+									"value": "n25",
+									"description": "numero de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "capacidad",
+									"value": "10",
+									"description": "capacida de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "camas",
+									"value": "2",
+									"description": "camas que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "banos",
+									"value": "3",
+									"description": "cantidad de baños que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel a cual pertenece la habitacion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearHabitacion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearHabitacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarHabitacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "n24",
+									"description": "numero de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "capacidad",
+									"value": "10",
+									"description": "capacida de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "camas",
+									"value": "2",
+									"description": "camas que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "banos",
+									"value": "3",
+									"description": "cantidad de baños que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel a cual pertenece la habitacion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarHabitacion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarHabitacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoHabitacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "n24",
+									"description": "numero de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "capacidad",
+									"value": "10",
+									"description": "capacida de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "camas",
+									"value": "2",
+									"description": "camas que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "banos",
+									"value": "3",
+									"description": "cantidad de baños que tiene la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "hotelId",
+									"value": "4",
+									"description": "hotel a cual pertenece la habitacion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoHabitacion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoHabitacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerHabitaciones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerHabitaciones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerHabitaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerHabitacionPorId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de la habitacion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerHabitacionPorId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerHabitacionPorId"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "promocion",
+			"item": [
+				{
+					"name": "/crearPromocion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "2000",
+									"description": "precio de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "1",
+									"description": "habitacion en promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearPromocion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearPromocion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarPromocion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de promocion",
+									"type": "text"
+								},
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "2000",
+									"description": "precio de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "1",
+									"description": "habitacion en promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarPromocion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarPromocion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerEstadoPromociones",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de promocion",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "1",
+									"description": "estado promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoPromocion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoPromocion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerPromociones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerPromociones",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerPromociones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerPromocionesPorHabitacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "habitacionId",
+									"value": "1",
+									"description": "id de la habitacion ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerPromocionesPorHabitacion",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerPromocionesPorHabitacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "precioDia",
+			"item": [
+				{
+					"name": "/crearPrecioDia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "2000",
+									"description": "precio de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "2",
+									"description": "habitacion en promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearPrecioDia",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearPrecioDia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarPrecioDia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "id del precio dia de la habitacion",
+									"type": "text"
+								},
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "2",
+									"description": "precio de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "1",
+									"description": "habitacion en promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarPrecioDia",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarPrecioDia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerPrecioDiaPorFecha",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerPrecioDiaPorFecha",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerPrecioDiaPorFecha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerPrecioDiaPorFechaYHabitacionId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fecha",
+									"value": "2019-05-17",
+									"description": "fecha de la promocion",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "2",
+									"description": "id de la habitacion",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/obtenerPrecioDiaPorFechaYHabitacionId",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"obtenerPrecioDiaPorFechaYHabitacionId"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reserva",
+			"item": [
+				{
+					"name": "/crearReserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fechaInicio",
+									"value": "2017-05-03",
+									"type": "text"
+								},
+								{
+									"key": "fechaTermino",
+									"value": "2017-05-04",
+									"type": "text"
+								},
+								{
+									"key": "total",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "medioPago",
+									"value": "tarjeta lider",
+									"type": "text"
+								},
+								{
+									"key": "habitacionId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "usuarioId",
+									"value": "18732997",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/crearReserva",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"crearReserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarReserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "id de la reserva",
+									"type": "text"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2017-05-03",
+									"description": "fecha de inicio de la reserva",
+									"type": "text"
+								},
+								{
+									"key": "fechaTermino",
+									"value": "2017-05-06",
+									"description": "fecha de termino de la reserva",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarReserva",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarReserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actualizarEstadoReserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "id de el movimientos",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "0",
+									"description": "anulado o no",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/actualizarEstadoReserva",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"actualizarEstadoReserva"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/obtenerReservas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
