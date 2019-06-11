@@ -179,7 +179,14 @@ module.exports = function(app)
     reserva.obtenerReservas(req, res);
   });
 
+  app.post("/obtenerReservasPorUsuario", ( req, res ) => {
+    reserva.obtenerReservasPorUsuario( req, res );
+  });
   
+  app.post("/obtenerReservasPorId", ( req, res ) => {
+    reserva.obtenerReservasPorId( req, res );
+  });
+
   app.post("/crearServicio", (req, res) => {
     servicio.crearServicio(req, res);
   });

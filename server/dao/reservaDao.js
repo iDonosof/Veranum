@@ -60,8 +60,38 @@ const obtenerReservas = function(){
     });
 };
 
+const obtenerReservasPorUsuario = function ( rut ) {
+    let query = "select reserva.ID, reserva.FECHA_INICIO, reserva.FECHA_TERMINO, reserva.TOTAL, reserva.MEDIO_PAGO, reserva.HABITACIONID, reserva.USUARIOID from reserva where reserva.USUARIOID = ? and reserva.ESTADO = 1";
+    return new Promise (( resolve, reject ) => {
+        con.query(query, [ rut ], (error, result, fields) => {
+            if( error ) {
+                console.log( error );
+                reject( error );
+                return;
+            }
+            resolve( result );
+        });
+    });
+}
+
+const obtenerReservasPorId = function ( id ) {
+    let query = "select reserva.ID, reserva.FECHA_INICIO, reserva.FECHA_TERMINO, reserva.TOTAL, reserva.MEDIO_PAGO, reserva.HABITACIONID, reserva.USUARIOID from reserva where reserva.ID = ?";
+    return new Promise( ( resolve, reject ) => {
+        con.query( query, [ id ], ( error, result, fields ) => {
+            if( error ) {
+                console.log( error );
+                reject( error );
+                return;
+            }
+            resolve ( result );
+        });
+    });
+}
+
 
 module.exports.crearReserva = crearReserva;
 module.exports.actualizarReserva = actualizarReserva;
 module.exports.actualizarEstadoReserva = actualizarEstadoReserva;
 module.exports.obtenerReservas = obtenerReservas;
+module.exports.obtenerReservasPorUsuario = obtenerReservasPorUsuario;
+module.exports.obtenerReservasPorId = obtenerReservasPorId;

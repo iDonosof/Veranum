@@ -1,13 +1,38 @@
-<!-- <form>
+<form [formGroup]="ReservaEliminarForm" (ngSubmit)="BuscarReserva()">
   <div class="form-group">
-    <label for="numero">Reservas</label>
-    <select class="form-control" id="numero">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
+    <label for="rut">Rut cliente</label>
+    <input type="text" class="form-control" name="rut" placeholder="Ingrese rut de la persona sin guión ni digito verificador" formControlName="rut">
   </div>
-  <button type="submit" class="btn btn-primary">Eliminar</button>
-</form> -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<br>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id reserva</th>
+      <th scope="col">Fecha inicio reserva</th>
+      <th scope="col">Fecha termino reserva</th>
+      <th scope="col">Total de la reserva</th>
+      <th scope="col">Medio de pago de la reserva</th>
+      <th scope="col">Id habitacion de la reserva</th>
+      <th> Eliminar </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="Reservas">
+      <th scope="row" colspan="6">No se encontraron reservas</th>
+    </tr>
+    <tr *ngFor="let Reserva of Reservas">
+      <th scope="row">{{Reserva.ID}}</th>
+      <th scope="row">{{Reserva.FECHA_INICIO}}</th>
+      <th scope="row">{{Reserva.FECHA_TERMINO}}</th>
+      <th scope="row">{{Reserva.TOTAL}}</th>
+      <th scope="row">{{Reserva.MEDIO_PAGO}}</th>
+      <th scope="row">{{Reserva.HABITACIONID}}</th>
+      <th (click)="EliminarReserva(Reserva.ID)"><i class="fas fa-trash-alt"></i></th>
+    </tr>
+  </tbody>
+</table>

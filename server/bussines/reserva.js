@@ -53,9 +53,25 @@ const obtenerReservas = function(req, res){
     });
 };
 
+const obtenerReservasPorUsuario = function ( req, res ) {
+    reservaDao.obtenerReservasPorUsuario( req.body.rut ).then( ( success ) => {
+        res.send( success );
+    }).catch( ( error ) => {
+        console.log( error );
+    });
+};
+
+const obtenerReservasPorId = function ( req, res ) {
+    reservaDao.obtenerReservasPorId( req.body.id ).then( ( success ) => {
+        res.send( success );
+    }).catch( ( error ) => {
+        console.log( error );
+    });
+}
 
 module.exports.crearReserva = crearReserva;
 module.exports.actualizarReserva = actualizarReserva;
 module.exports.actualizarEstadoReserva = actualizarEstadoReserva;
 module.exports.obtenerReservas = obtenerReservas;
-
+module.exports.obtenerReservasPorUsuario = obtenerReservasPorUsuario;
+module.exports.obtenerReservasPorId = obtenerReservasPorId;
