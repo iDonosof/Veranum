@@ -32,7 +32,7 @@ const loginDatos = function( usuario ) {
 const crearUsuario = function(usuario){
     let query = "select FN_CREAR_USUARIO (?,?,?,?,?,?,?,?,?)";
     return new Promise((resolve, reject) => {
-        con.query(query, [usuario.rut, usuario.nombre, usuario.apellido, usuario.telefono, usuario.direccion, usuario.correo, usuario.nombreUsuario, usuario.contrasena,usuario.empresaid], (error, result, fields) => {
+        con.query(query, [usuario.rut, usuario.nombre, usuario.apellido, usuario.telefono, usuario.direccion, usuario.correo, usuario.nombreUsuario, usuario.contrasena,usuario.empresaId], (error, result, fields) => {
             if(error){
                 console.log(error);
                 reject(error);

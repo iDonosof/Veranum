@@ -24,7 +24,7 @@ const crearUsuario = function(req, res){
         correo : req.body.correo,
         nombreUsuario : req.body.nombreUsuario,
         contrasena : req.body.contrasena,
-        empresaid : parseInt(req.body.empresaid)
+        empresaId : parseInt(req.body.empresaId)
     };
     usuarioDao.crearUsuario(usuario).then((success) => {
         res.send(success.toString());
