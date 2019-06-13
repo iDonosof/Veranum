@@ -9,14 +9,20 @@ import { HttpClient } from '@angular/common/http';
 export class NavComponent implements OnInit {
   private usd;
   private weather;
-  username : any;
+  user = {
+    username: null,
+    rut: null,
+    tipo: null
+  };
 
   constructor( private http: HttpClient ) { }
 
   ngOnInit() {
     this.getTodayUsdRate()
     // this.getTodayWeather();
-    this.username = localStorage.getItem('username');
+    this.user.username = localStorage.getItem('username');
+    this.user.rut = localStorage.getItem('rut');
+    this.user.tipo = localStorage.getItem('tipo');
   }
 
   getTodayUsdRate(){
@@ -28,6 +34,9 @@ export class NavComponent implements OnInit {
 
   CerrarSesion () {
     localStorage.removeItem('username');
+    localStorage.removeItem('rut');
+    localStorage.removeItem('tipo');
+    location.href = 'Login';
   }
   //APIKEY = 494a8045cfbce532ebce3263c57bb520
   // getTodayWeather(){

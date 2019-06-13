@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
       if(res[0] != null && res[0] != undefined) {
         localStorage.setItem('username', this.LoginForm.controls.username.value);
         localStorage.setItem('rut', res[0].RUT);
-        this.router.navigate(['']);
+        localStorage.setItem('tipo', res[0].TIPO);
+        location.href = '';
       }
       else
       {

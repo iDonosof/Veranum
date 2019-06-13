@@ -20,7 +20,7 @@ export class ReservaInsertarComponent implements OnInit {
   //Valor del dolar
   usd = 1;
   //Valor total en pesos chilenos
-  valorTotalCLP
+  valorTotalCLP = 0;
 
   constructor(private http: HttpClient, private formBuilder : FormBuilder) {
     this.ReservaForm = this.formBuilder.group({
@@ -90,7 +90,7 @@ export class ReservaInsertarComponent implements OnInit {
     {
       this.valorTotal = 0;
     }
-    this.valorTotalCLP = this.valorTotal * this.usd;
+    this.valorTotalCLP = Math.round(this.valorTotal * this.usd);
   }
 
   //Calcular la cantidad de dias entre dos fechas dadas por parametros

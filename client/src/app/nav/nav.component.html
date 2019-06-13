@@ -3,23 +3,23 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" *ngIf="username != null && username != undefined">
+    <ul class="navbar-nav mr-auto" *ngIf="user.rut != null && user.rut != undefined">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/">Inicio <span class="sr-only"></span></a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Habitaciones
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="HabitacionLista">Ver habitaciones</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="HabitacionInsertar">Agregar habitación</a>
-          <a class="dropdown-item" routerLink="HabitacionActualizar">Editar habitación</a>
-          <a class="dropdown-item" routerLink="HabitacionEliminar">Eliminar habitación</a>
+          <div class="dropdown-divider" *ngIf="user.tipo > 3"></div>
+          <a class="dropdown-item" routerLink="HabitacionInsertar" *ngIf="user.tipo > 3">Agregar habitación</a>
+          <a class="dropdown-item" routerLink="HabitacionActualizar" *ngIf="user.tipo > 3">Editar habitación</a>
+          <a class="dropdown-item" routerLink="HabitacionEliminar" *ngIf="user.tipo > 4">Eliminar habitación</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="user.tipo > 3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Productos
         </a>
@@ -28,10 +28,10 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="ProductoInsertar">Agregar productos</a>
           <a class="dropdown-item" routerLink="ProductoActualizar">Editar productos</a>
-          <a class="dropdown-item" routerLink="ProductoEliminar">Eliminar productos</a>
+          <a class="dropdown-item" routerLink="ProductoEliminar" *ngIf="user.tipo > 4">Eliminar productos</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="user.tipo > 3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Reservas
         </a>
@@ -40,10 +40,13 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="ReservaInsertar">Agregar reservas</a>
           <a class="dropdown-item" routerLink="ReservaActualizar">Editar reservas</a>
-          <a class="dropdown-item" routerLink="ReservaEliminar">Eliminar reservas</a>
+          <a class="dropdown-item" routerLink="ReservaEliminar" *ngIf="user.tipo > 4">Eliminar reservas</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item" *ngIf="user.tipo < 3">
+          <a class="nav-link" routerLink="ReservaInsertar">Agregar reserva <span class="sr-only"></span></a>
+        </li>
+      <li class="nav-item dropdown" *ngIf="user.tipo > 3">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Usuario
         </a>
@@ -51,13 +54,13 @@
           <a class="dropdown-item" routerLink="UsuarioVer">Ver Usuarios</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="UsuarioInsertar">Agregar usuario</a>
-          <a class="dropdown-item" routerLink="UsuarioActualizar">Editar usuario</a>
-          <a class="dropdown-item" routerLink="UsuarioEliminar">Eliminar usuario</a>
+          <a class="dropdown-item" routerLink="UsuarioActualizar" *ngIf="user.tipo > 4">Editar usuario</a>
+          <a class="dropdown-item" routerLink="UsuarioEliminar" *ngIf="user.tipo > 4">Eliminar usuario</a>
         </div>
       </li>
       
     </ul>
-    <div *ngIf="username == null || username == undefined">
+    <div *ngIf="user.rut == null || user.rut == undefined">
       <span class="navbar-text">
         <a routerLink="Login">Login</a>
       </span>
@@ -65,10 +68,10 @@
         <a routerLink="Signup">Registrarse</a>
       </span>
     </div>
-    <span class="navbar-text" *ngIf="username != null && username != undefined">
-      {{ username }}
+    <span class="navbar-text" *ngIf="user.rut != null && user.rut != undefined">
+      {{ user.username }}
     </span>
-    <span class="navbar-text" *ngIf="username != null && username != undefined">
+    <span class="navbar-text" *ngIf="user.rut != null && user.rut != undefined">
         <button (click)="CerrarSesion()">Cerrar Sesion</button>
     </span>
     <span class="navbar-text">

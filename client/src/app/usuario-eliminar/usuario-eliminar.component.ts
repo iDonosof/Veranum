@@ -33,16 +33,15 @@ export class UsuarioEliminarComponent implements OnInit {
       rut: this.UsuarioEliminarForm.controls.rut.value
     }).subscribe( ( res : any[] ) => {
       if(res) {
-        res = res[0];
-        this.UsuarioEliminarForm.controls.rut.setValue(res.RUT);
-        this.UsuarioEliminarForm.controls.nombre.setValue(res.NOMBRE);
-        this.UsuarioEliminarForm.controls.apellido.setValue(res.APELLIDO);
-        this.UsuarioEliminarForm.controls.telefono.setValue(res.TELEFONO);
-        this.UsuarioEliminarForm.controls.direccion.setValue(res.DIRECCION);
-        this.UsuarioEliminarForm.controls.correo.setValue(res.CORREO);
-        this.UsuarioEliminarForm.controls.nombreUsuario.setValue(res.NOMBREUSUARIO);
-        this.UsuarioEliminarForm.controls.contrasena.setValue(res.CONTRASENA);
-        this.UsuarioEliminarForm.controls.empresaId.setValue(res.EMPRESAID);
+        this.UsuarioEliminarForm.controls.rut.setValue(res[0].RUT);
+        this.UsuarioEliminarForm.controls.nombre.setValue(res[0].NOMBRE);
+        this.UsuarioEliminarForm.controls.apellido.setValue(res[0].APELLIDO);
+        this.UsuarioEliminarForm.controls.telefono.setValue(res[0].TELEFONO);
+        this.UsuarioEliminarForm.controls.direccion.setValue(res[0].DIRECCION);
+        this.UsuarioEliminarForm.controls.correo.setValue(res[0].CORREO);
+        this.UsuarioEliminarForm.controls.nombreUsuario.setValue(res[0].NOMBREUSUARIO);
+        this.UsuarioEliminarForm.controls.contrasena.setValue(res[0].CONTRASENA);
+        this.UsuarioEliminarForm.controls.empresaId.setValue(res[0].EMPRESAID);
       }
       else {
         alert('Usuario no encontrado');

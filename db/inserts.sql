@@ -1,8 +1,27 @@
-select fn_crear_hotel('Alguna direccion de chile', 'Alguna region de chile', 123123123, 0)
-select fn_crear_habitacion(10, 2, 1, 1, 1)
-select fn_crear_habitacion(20, 2, 2, 1, 1)
-select fn_crear_habitacion(30, 4, 2, 2, 1)
-select fn_crear_preciodia('2019-05-17', 60, 1)
-select fn_crear_preciodia('2019-05-17', 70, 2)
-select fn_crear_preciodia('2019-05-17', 85, 3)
-select fn_crear_usuario(19845227, 'Ignacio', 'Donoso', 123456789, 'Algun lugar', 'algunCorreo@correo.cl','iDonosof', 'asd123asd', 0);
+INSERT INTO usuario(RUT, NOMBRE, APELLIDO, TELEFONO, DIRECCION, CORREO, TIPO, ESTADO, NOMBREUSUARIO, CONTRASENA, EMPRESAID) VALUES(12345678, 'Cuenta', 'Normal', 123123123, 'Direccion normal', 'normal@normal.com', 1, 1, 'Normal', 'asd123asd', null);
+INSERT INTO usuario(RUT, NOMBRE, APELLIDO, TELEFONO, DIRECCION, CORREO, TIPO, ESTADO, NOMBREUSUARIO, CONTRASENA, EMPRESAID) VALUES(23456789, 'Cuenta', 'Admin', 123123123, 'Direccion admin', 'admin@admin.com', 4, 1, 'Admin', 'asd123asd', null);
+INSERT INTO usuario(RUT, NOMBRE, APELLIDO, TELEFONO, DIRECCION, CORREO, TIPO, ESTADO, NOMBREUSUARIO, CONTRASENA, EMPRESAID) VALUES(34567890, 'Cuenta', 'Super admin', 123123123, 'Direccion super admin', 'superadmin@superadmin.com', 5, 1, 'Superadmin', 'asd123asd', null);
+
+INSERT INTO  hotel(ID, DIRECCION, REGION, TELEFONO, ESTADO, ADMINISTRADOR) VALUES(1, 'Alguna direccion de chile', 'Alguna region de chile', 123123123, 1, null);
+INSERT INTO  hotel(ID, DIRECCION, REGION, TELEFONO, ESTADO, ADMINISTRADOR) VALUES(2, 'Esq Blanca 501, Maipú,', 'Region metropolitana', 456456456, 1, null);
+
+INSERT INTO habitacion(ID, NUMERO, CAMAS, CAPACIDAD, BANOS, ESTADO, HOTELID) VALUES(1, 10, 1, 2, 1, 1, 1);
+INSERT INTO habitacion(ID, NUMERO, CAMAS, CAPACIDAD, BANOS, ESTADO, HOTELID) VALUES(2, 20, 2, 2, 1, 1, 1);
+INSERT INTO habitacion(ID, NUMERO, CAMAS, CAPACIDAD, BANOS, ESTADO, HOTELID) VALUES(3, 30, 2, 4, 2, 1, 1);
+
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-13', 60, 1);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-13', 70, 2);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-13', 80, 3);
+
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-14', 60, 1);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-14', 70, 2);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-14', 80, 3);
+
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-15', 60, 1);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-15', 70, 2);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-15', 80, 3);
+
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-16', 60, 1);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-16', 70, 2);
+INSERT INTO preciodia(FECHA, PRECIO, HABITACIONID) VALUES('2019-06-16', 80, 3);
+

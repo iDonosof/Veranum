@@ -54,7 +54,6 @@ const obtenerReservas = function(){
                 reject(error);
                 return;
             }
-            let keys = Object.keys(result[0]);
             resolve(result); 
         });
     });

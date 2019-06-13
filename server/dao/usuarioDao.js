@@ -16,7 +16,7 @@ const login = function(usuario){
 };
 
 const loginDatos = function( usuario ) {
-    let query = "select RUT, NOMBREUSUARIO from USUARIO where USUARIO.NOMBREUSUARIO = ? and USUARIO.CONTRASENA = ?";
+    let query = "select RUT, NOMBREUSUARIO, TIPO from USUARIO where USUARIO.NOMBREUSUARIO = ? and USUARIO.CONTRASENA = ?";
     return new Promise( (resolve, reject) => {
         con.query(query, [usuario.username, usuario.contrasena], (error, result, fields) => {
             if(error) {
