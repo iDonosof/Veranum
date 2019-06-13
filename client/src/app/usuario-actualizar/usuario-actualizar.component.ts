@@ -51,7 +51,6 @@ export class UsuarioActualizarComponent implements OnInit {
       contrasena: this.UsuarioActualizarForm.controls.contrasena.value,
       empresaid: this.UsuarioActualizarForm.controls.empresaId.value
     }).subscribe( ( res : any ) => {
-      console.log(res);
       if( +res == 1 ) {
         alert('Usuario actualizado exitosamente')
         this.LimpiarCampos();
