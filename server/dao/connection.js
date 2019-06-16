@@ -7,9 +7,9 @@ var con = mysql.createConnection({
   // password: "Citt.2018",
 
   //Ignacio's Conection 2
-  host: "192.168.56.2",
-  user: "citt",
-  password: "Citt.2018",
+  host: "192.168.1.134",
+  user: "weasdf",
+  password: "palito",
 
   //Jamon's Conection
   // host: "192.168.1.134",

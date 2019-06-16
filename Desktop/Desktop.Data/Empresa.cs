@@ -66,7 +66,6 @@ namespace Desktop.Data
         public List<Empresa> ObtenerEmpresas()
         {
             Conexion.Url = _url;
-
             Conexion.Cliente.BaseAddress = new Uri(_url);
             var res = Conexion.Cliente.GetStringAsync(_url + "obtenerEmpresas").Result;
             List<Empresa> empresas = JsonConvert.DeserializeObject<List<Empresa>>(res);

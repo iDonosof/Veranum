@@ -24,6 +24,7 @@ namespace Desktop.Presentation
     public partial class MainWindow : Window
     {
         private int hotelId = 0;
+        private Usuario _usuario;
         private List<Habitacion> HabitacionesDelHotel = new List<Habitacion>();
         private List<Hotel> Hoteles = new List<Hotel>();
         public ObservableCollection<Empresa> Empresas { get; set; }
@@ -33,8 +34,9 @@ namespace Desktop.Presentation
         public ObservableCollection<PrecioDia> Precios { get; set; }
         public ObservableCollection<Promocion> Promociones { get; set; }
 
-        public MainWindow()
+        public MainWindow(Usuario usr)
         {
+            _usuario = usr;
             Empresas = new ObservableCollection<Empresa>();
             Productos = new ObservableCollection<Producto>();
             Habitaciones = new ObservableCollection<Habitacion>();
@@ -42,14 +44,15 @@ namespace Desktop.Presentation
             Precios = new ObservableCollection<PrecioDia>();
             Promociones = new ObservableCollection<Promocion>();
             InitializeComponent();
-            CargarEmpresas();
             CargarHoteles();
+            ValidarExistenciaDeHotel();
+            CargarEmpresas();
         }
 
         void CargarHoteles()
         {
             var hotel = new Hotel();
-            Hoteles = hotel.ObtenerHoteles();
+            Hoteles = hotel.ObetenerHotelPorAdmin(_usuario.Rut);
             foreach (var h in Hoteles)
             {
                 cbHotel.Items.Add(new ComboBoxItem { Content = h.Direccion, Tag = h.ID });
@@ -109,9 +112,10 @@ namespace Desktop.Presentation
 
         void CargarPrecios()
         {
+            int habId = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString());
             PrecioDia precio = new PrecioDia();
             Precios.Clear();
-            foreach (PrecioDia pre in precio.ObtenerPrecioDiaPorFecha(DateTime.Parse(dtPrecioDia.Text)))
+            foreach (PrecioDia pre in precio.ObtenerPrecioDiaPorFechaYHabitacionId(DateTime.Now, habId))
             {
                 Precios.Add(pre);
             }
@@ -120,9 +124,10 @@ namespace Desktop.Presentation
 
         void CargarPromociones()
         {
+            var habId = int.Parse(((ComboBoxItem)cbHabPromo.SelectedItem).Tag.ToString()); ;
             Promocion promocion = new Promocion();
             Promociones.Clear();
-            foreach (Promocion promo in promocion.ObtenerHabitacionPorId(1))
+            foreach (Promocion promo in promocion.ObtenerHabitacionPorId(habId))
             {
                 Promociones.Add(promo);
             }
@@ -192,12 +197,13 @@ namespace Desktop.Presentation
                 Direccion = txtDirecHotel.Text,
                 Region = txtRegionHotel.Text,
                 Telefono = int.Parse(txtHotelTelefono.Text),
-                Estado = true
+                Administrador = _usuario.Rut
             };
             if(!hotel.CrearHotel(hotel))
             {
                 MessageBox.Show("No se pudo agregar hotel");
             }
+            ValidarExistenciaDeHotel();
         }
 
         void AgregarEmpresa()
@@ -236,7 +242,7 @@ namespace Desktop.Presentation
                 Ubicacion = txtUbiacion.Text,
                 Estado = chkProdEstado.IsChecked.Value ? true : false
             };
-            if(prod.CrearProducto(prod))
+            if(!prod.CrearProducto(prod))
             {
                 MessageBox.Show("No se pudo agregar producto");
             }
@@ -257,9 +263,10 @@ namespace Desktop.Presentation
                 Camas = int.Parse(txtCamas.Text),
                 Capacidad = int.Parse(txtCapacidad.Text),
                 Numero = int.Parse(txtHabNum.Text),
+                HotelId = hotelId,
                 Estado = chkHabEstado.IsChecked.Value ? true : false
             };
-            if(hab.CrearHabitacion(hab))
+            if(!hab.CrearHabitacion(hab))
             {
                 MessageBox.Show("No se pudo agregar habitacion");
             }
@@ -274,7 +281,7 @@ namespace Desktop.Presentation
                 Nombre = txtNombreSer.Text,
                 Estado = chkSerEstado.IsChecked.Value ? true : false
             };
-            if(ser.CrearServicio(ser))
+            if(!ser.CrearServicio(ser))
             {
                 MessageBox.Show("No se pudo agregar servicio");
             }
@@ -295,7 +302,7 @@ namespace Desktop.Presentation
                 HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
                
             };
-            if(precio.CrearPrecioDia(precio))
+            if(!precio.CrearPrecioDia(precio))
             {
                 MessageBox.Show("No se pudo agregar precio");
             }
@@ -326,13 +333,23 @@ namespace Desktop.Presentation
         void ValidarExistenciaDeHotel()
         {
             var hotel = new Hotel();
-            if (hotel.ObtenerHoteles().Count == 0)
+            if (hotel.ObetenerHotelPorAdmin(_usuario.Rut).Count == 0)
             {
                 tbEmpresas.IsEnabled = false;
                 tbHabitacion.IsEnabled = false;
                 tbPrecioDia.IsEnabled = false;
                 tbPromocion.IsEnabled = false;
                 tbServicio.IsEnabled = false;
+                tbProducto.IsEnabled = false;
+            }
+            else
+            {
+                tbEmpresas.IsEnabled = true;
+                tbHabitacion.IsEnabled = true;
+                tbPrecioDia.IsEnabled = true;
+                tbPromocion.IsEnabled = true;
+                tbProducto.IsEnabled = true;
+                tbServicio.IsEnabled = true;
             }
         }
 
@@ -341,6 +358,8 @@ namespace Desktop.Presentation
             var tag = ((ComboBoxItem)cbHotel.SelectedItem).Tag.ToString();
             hotelId = int.Parse(tag);
             CargarHabitaciones();
+            CargarProductos();
+            CargarServicios();
         }
 
         private void btnGuardarHotel_Click(object sender, RoutedEventArgs e)
@@ -391,6 +410,16 @@ namespace Desktop.Presentation
             AgregarPromocion();
             CargarPromociones();
             LimpiarCamposPromocion();
+        }
+
+        private void CbHabPrecio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CargarPrecios();
+        }
+
+        private void CbHabPromo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CargarPromociones();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Desktop.Data
                 { "correo", usuario.Correo },
                 { "nombreUsuario", usuario.NombreUsuario },
                 { "contrasena", usuario.Contrasena },
-                { "empresaid", 123.ToString() }
+                { "empresaid", EmpresaID.ToString() ?? "null" }
             };
             try
             {
@@ -172,5 +172,18 @@ namespace Desktop.Data
             }
         }
 
+        public Usuario ObtenterUsuarioPorLogin(string nombreUsuario, string contrasena)
+        {
+            var usrs =  ObtenerUsuarios();
+            return usrs.FirstOrDefault(u => u.NombreUsuario == nombreUsuario && u.Contrasena == contrasena);
+            //foreach(var usr in usrs)
+            //{
+            //    if (usr.NombreUsuario == nombreUsuario && usr.Contrasena == contrasena)
+            //    {
+            //        return usr;
+            //    }
+            //}
+            //return null;
+        }
     }
 }

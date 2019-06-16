@@ -16,7 +16,7 @@ namespace Desktop.Data
         public string Region { get; set; }
         public long Telefono { get; set; }
         public bool Estado { get; set; }
-        public string Administrador { get; set; }
+        public int? Administrador { get; set; }
 
         public Hotel()
         {
@@ -31,7 +31,7 @@ namespace Desktop.Data
                 { "direccion", hotel.Direccion },
                 { "region", hotel.Region },
                 { "telefono", hotel.Telefono.ToString() },
-                { "administrador", hotel.Administrador },
+                { "administrador", hotel.Administrador.ToString() }
             };
             return Conexion.Post(queryParams, "crearHotel"); ;
         }
@@ -46,7 +46,7 @@ namespace Desktop.Data
                 { "direccion", hotel.Direccion },
                 { "region", hotel.Region },
                 { "telefono", hotel.Telefono.ToString() },
-                { "administrador", hotel.Administrador },
+                { "administrador", hotel.Administrador.ToString() },
             };
             return Conexion.Post(queryParams, "actualizarHotel"); ;
         }
@@ -81,8 +81,15 @@ namespace Desktop.Data
             Conexion.Url = _url;
             Conexion.Cliente.BaseAddress = new Uri(_url);
             var res = Conexion.Cliente.GetStringAsync(_url + "obtenerHoteles").Result;
-            List<Hotel> empresas = JsonConvert.DeserializeObject<List<Hotel>>(res);
-            return empresas;
+            List<Hotel> hoteles = JsonConvert.DeserializeObject<List<Hotel>>(res);
+            return hoteles;
+        }
+
+        public List<Hotel> ObetenerHotelPorAdmin(int adminId)
+        {
+            var hoteles = ObtenerHoteles().Where(h => h.Administrador != null && h.Administrador == adminId).ToList();
+
+            return hoteles;
         }
     }
 }

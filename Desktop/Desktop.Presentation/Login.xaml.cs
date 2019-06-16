@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Desktop.Data;
 
 namespace Desktop.Presentation
 {
@@ -22,6 +23,26 @@ namespace Desktop.Presentation
         public Window1()
         {
             InitializeComponent();
+        }
+        void Login()
+        {
+            Usuario usr = new Usuario();
+            if(usr.Login(txtUsuario.Text, txtPass.Password))
+            {
+                var datosUsr = usr.ObtenterUsuarioPorLogin(txtUsuario.Text, txtPass.Password);
+                var win = new MainWindow(datosUsr);
+                this.Hide();
+                win.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nombre de usuario o contraseña incorrectos", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Login();
         }
     }
 }

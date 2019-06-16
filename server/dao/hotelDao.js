@@ -16,7 +16,7 @@ const crearHotel = function(hotel){
 };
 
 const actualizarHotel = function(hotel){
-    let query = "select FN_ACTUALIZAR_HOTEL (?,?,?,?,?)";
+    let query = "select FN_ACTUALIZAR_HOTEL (?,?,?,?)";
     console.log(hotel);
     return new Promise((resolve, reject) => {
         con.query(query, [hotel.id,hotel.direccion,hotel.region,hotel.telefono,hotel.administrador], (error, result, fields) => {

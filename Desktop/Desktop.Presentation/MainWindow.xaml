@@ -43,11 +43,11 @@
                     <Label Content="Direccion:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" />
                     <Label Content="Region:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
                     <Label Content="Telefono:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"/>
-                    <Label Content="Estado:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                    <!--<Label Content="Estado:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"/>-->
                     <TextBox x:Name="txtDirecHotel" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
                     <TextBox x:Name="txtRegionHotel" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
                     <TextBox x:Name="txtHotelTelefono" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
-                    <CheckBox x:Name="chkHotelEstado" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>
+                    <!--<CheckBox x:Name="chkHotelEstado" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>-->
                     <Button x:Name="btnGuardarHotel" Content="Guardar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Grid.Column="1" Grid.Row="6" Click="btnGuardarHotel_Click"/>
                     <DataGrid x:Name="dtgHotel" HorizontalAlignment="Stretch" Grid.RowSpan="6" VerticalAlignment="Stretch" Grid.Column="2" Margin="5 5 5 5" 
                               ItemsSource="{Binding Hoteles}" Width="auto">
@@ -201,7 +201,7 @@
                     <Label Content="Fecha:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
                     <Label Content="Precio:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"/>
                     <Label Content="Estado:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"/>
-                    <ComboBox x:Name="cbHabPrecio" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+                    <ComboBox x:Name="cbHabPrecio" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" SelectionChanged="CbHabPrecio_SelectionChanged"/>
                     <DatePicker x:Name="dtPrecioDia" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
                     <TextBox x:Name="txtPrecio" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
                     <CheckBox x:Name="chkPrecioEstado" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>
@@ -230,7 +230,7 @@
                     <Label Content="Fecha:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
                     <Label Content="Precio:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"/>
                     <Label Content="Estado:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"/>
-                    <ComboBox x:Name="cbHabPromo"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+                    <ComboBox x:Name="cbHabPromo"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" SelectionChanged="CbHabPromo_SelectionChanged"/>
                     <DatePicker x:Name="dtPromo"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
                     <TextBox x:Name="txtPrecioPromo" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
                     <CheckBox x:Name="chkEstadoPromo" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"/>

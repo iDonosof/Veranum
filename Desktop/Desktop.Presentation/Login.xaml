@@ -21,7 +21,7 @@
 
         <TextBox x:Name="txtUsuario" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25" Margin="5 0 5 0"/>
         <PasswordBox x:Name="txtPass" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25" Margin="5 0 5 0"></PasswordBox>
-        <Button Content="Iniciar" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"/>
+        <Button Content="Iniciar" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="Button_Click"/>
         <Label Content="Usuario" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Label Content="Contraseña" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
