@@ -48,85 +48,138 @@ namespace Desktop.Presentation
 
         void CargarHoteles()
         {
-            var hotel = new Hotel();
-            Hoteles = hotel.ObtenerHoteles();
-            foreach (var h in Hoteles)
+            try
             {
-                cbHotel.Items.Add(new ComboBoxItem { Content = h.Direccion, Tag = h.ID });
+                var hotel = new Hotel();
+                Hoteles = hotel.ObtenerHoteles();
+                foreach (var h in Hoteles)
+                {
+                    cbHotel.Items.Add(new ComboBoxItem { Content = h.Direccion, Tag = h.ID });
+                }
+                cbHotel.Items.Refresh();
+                dtgHotel.ItemsSource = Hoteles;
             }
-            cbHotel.Items.Refresh();
-            dtgHotel.ItemsSource = Hoteles;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void CargarEmpresas()
         {
-            Empresa empresa = new Empresa();
-            Empresas.Clear();
-            foreach (Empresa emp in empresa.ObtenerEmpresas())
+            try
             {
-                Empresas.Add(emp);
+                Empresa empresa = new Empresa();
+                Empresas.Clear();
+                foreach (Empresa emp in empresa.ObtenerEmpresas())
+                {
+                    Empresas.Add(emp);
+                }
+                dtgEmpresas.ItemsSource = Empresas;
             }
-            dtgEmpresas.ItemsSource = Empresas;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void CargarProductos()
         {
-            Producto producto = new Producto();
-            Productos.Clear();
-            foreach (Producto pro in producto.ObtenerProductosPorHotel(hotelId))
+            try
             {
-                Productos.Add(pro);
+                Producto producto = new Producto();
+                Productos.Clear();
+                foreach (Producto pro in producto.ObtenerProductosPorHotel(hotelId))
+                {
+                    Productos.Add(pro);
+                }
+                dtgProductos.ItemsSource = Productos;
             }
-            dtgProductos.ItemsSource = Productos;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void CargarHabitaciones()
         {
-            Habitacion habitacion = new Habitacion();
-            Habitaciones.Clear();
-            cbHabPrecio.Items.Clear();
-            foreach (Habitacion hab in habitacion.ObtenerHabitacionPorId(hotelId))
+            try
             {
-                Habitaciones.Add(hab);
+                Habitacion habitacion = new Habitacion();
+                Habitaciones.Clear();
+                cbHabPrecio.Items.Clear();
+                foreach (Habitacion hab in habitacion.ObtenerHabitacionPorId(hotelId))
+                {
+                    Habitaciones.Add(hab);
+                }
+                dtgHabitacion.ItemsSource = Habitaciones;
+                foreach (var h in Habitaciones)
+                {
+                    cbHabPrecio.Items.Add(new ComboBoxItem { Content = h.Numero, Tag = h.Id });
+                }
             }
-            dtgHabitacion.ItemsSource = Habitaciones;
-            foreach (var h in Habitaciones)
+            catch (Exception ex)
             {
-                cbHabPrecio.Items.Add(new ComboBoxItem { Content = h.Numero, Tag = h.Id });
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         private void CargarServicios()
         {
-            Servicio servicio = new Servicio();
-            Servicios.Clear();
-            foreach (Servicio ser in servicio.ObtenerServiciosPorHotel(hotelId))
+            try
             {
-                Servicios.Add(ser);
+                Servicio servicio = new Servicio();
+                Servicios.Clear();
+                foreach (Servicio ser in servicio.ObtenerServiciosPorHotel(hotelId))
+                {
+                    Servicios.Add(ser);
+                }
+                dtgServicio.ItemsSource = Servicios;
             }
-            dtgServicio.ItemsSource = Servicios;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         void CargarPrecios()
         {
-            PrecioDia precio = new PrecioDia();
-            Precios.Clear();
-            foreach (PrecioDia pre in precio.ObtenerPrecioDiaPorFecha(DateTime.Parse(dtPrecioDia.Text)))
+            try
             {
-                Precios.Add(pre);
+                PrecioDia precio = new PrecioDia();
+                Precios.Clear();
+                foreach (PrecioDia pre in precio.ObtenerPrecioDiaPorFecha(DateTime.Parse(dtPrecioDia.Text)))
+                {
+                    Precios.Add(pre);
+                }
+                dtgPrecioDia.ItemsSource = Precios;
             }
-            dtgPrecioDia.ItemsSource = Precios;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         void CargarPromociones()
         {
-            Promocion promocion = new Promocion();
-            Promociones.Clear();
-            foreach (Promocion promo in promocion.ObtenerHabitacionPorId(1))
+            try
             {
-                Promociones.Add(promo);
+                Promocion promocion = new Promocion();
+                Promociones.Clear();
+                foreach (Promocion promo in promocion.ObtenerHabitacionPorId(1))
+                {
+                    Promociones.Add(promo);
+                }
+                dtgPromocion.ItemsSource = Promociones;
             }
-            dtgPromocion.ItemsSource = Promociones;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         void LimpiarCamposHotel()
@@ -187,142 +240,192 @@ namespace Desktop.Presentation
 
         void AgregarHotel()
         {
-            var hotel = new Hotel
+            try
             {
-                Direccion = txtDirecHotel.Text,
-                Region = txtRegionHotel.Text,
-                Telefono = int.Parse(txtHotelTelefono.Text),
-                Estado = true
-            };
-            if(!hotel.CrearHotel(hotel))
+                var hotel = new Hotel
+                {
+                    Direccion = txtDirecHotel.Text,
+                    Region = txtRegionHotel.Text,
+                    Telefono = int.Parse(txtHotelTelefono.Text),
+                    Estado = true
+                };
+                if (!hotel.CrearHotel(hotel))
+                {
+                    MessageBox.Show("No se pudo agregar hotel");
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo agregar hotel");
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         void AgregarEmpresa()
         {
-            Empresa empresa = new Empresa
+            try
             {
-                Rut = int.Parse(txtRut.Text),
-                Nombre = txtNombre.Text,
-                Direccion = txtDireccion.Text,
-                Telefono = txtTelefono.Text,
-                Estado = chkEstado.IsChecked.Value ? true : false
-            };
-            if(empresa.CrearEmpresa(empresa))
-            {
-                MessageBox.Show("No se pudo agregar empresa");
+                Empresa empresa = new Empresa
+                {
+                    Rut = int.Parse(txtRut.Text),
+                    Nombre = txtNombre.Text,
+                    Direccion = txtDireccion.Text,
+                    Telefono = txtTelefono.Text,
+                    Estado = chkEstado.IsChecked.Value ? true : false
+                };
+                if (empresa.CrearEmpresa(empresa))
+                {
+                    MessageBox.Show("No se pudo agregar empresa");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         void AgregarProducto()
         {
-            int stockDisponible = 0;
-            int stockTotal = 0;
-            if(!int.TryParse(txtStockDispo.Text, out stockDisponible) ||
-                !int.TryParse(txtStockTotal.Text, out stockTotal))
+            try
             {
-                MessageBox.Show("campo stock disponible o stock total, solo deben ser numeros");
-                return;
+                int stockDisponible = 0;
+                int stockTotal = 0;
+                if (!int.TryParse(txtStockDispo.Text, out stockDisponible) ||
+                    !int.TryParse(txtStockTotal.Text, out stockTotal))
+                {
+                    MessageBox.Show("campo stock disponible o stock total, solo deben ser numeros");
+                    return;
+                }
+                var prod = new Producto
+                {
+                    Descripcion = txtProdDesc.Text,
+                    HotelID = hotelId,
+                    Nombre = txtProdNombre.Text,
+                    StockDisponible = int.Parse(txtStockDispo.Text),
+                    StockTotal = int.Parse(txtStockTotal.Text),
+                    Ubicacion = txtUbiacion.Text,
+                    Estado = chkProdEstado.IsChecked.Value ? true : false
+                };
+                if (prod.CrearProducto(prod))
+                {
+                    MessageBox.Show("No se pudo agregar producto");
+                }
             }
-            var prod = new Producto
+            catch (Exception ex)
             {
-                Descripcion = txtProdDesc.Text,
-                HotelID = hotelId,
-                Nombre = txtProdNombre.Text,
-                StockDisponible = int.Parse(txtStockDispo.Text),
-                StockTotal = int.Parse(txtStockTotal.Text),
-                Ubicacion = txtUbiacion.Text,
-                Estado = chkProdEstado.IsChecked.Value ? true : false
-            };
-            if(prod.CrearProducto(prod))
-            {
-                MessageBox.Show("No se pudo agregar producto");
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         void AgregarHabitacion()
         {
-            int banos = 0, camas = 0, capacidad = 0;
-            if(!int.TryParse(txtBanos.Text, out banos) || !int.TryParse(txtCamas.Text, out camas) ||
-                !int.TryParse(txtCapacidad.Text, out capacidad))
+            try
             {
-                MessageBox.Show("los campos deben ser numericos");
-                return;
+                int banos = 0, camas = 0, capacidad = 0;
+                if (!int.TryParse(txtBanos.Text, out banos) || !int.TryParse(txtCamas.Text, out camas) ||
+                    !int.TryParse(txtCapacidad.Text, out capacidad))
+                {
+                    MessageBox.Show("los campos deben ser numericos");
+                    return;
+                }
+                var hab = new Habitacion
+                {
+                    Banos = int.Parse(txtBanos.Text),
+                    Camas = int.Parse(txtCamas.Text),
+                    Capacidad = int.Parse(txtCapacidad.Text),
+                    Numero = int.Parse(txtHabNum.Text),
+                    Estado = chkHabEstado.IsChecked.Value ? true : false
+                };
+                if (hab.CrearHabitacion(hab))
+                {
+                    MessageBox.Show("No se pudo agregar habitacion");
+                }
             }
-            var hab = new Habitacion
+            catch (Exception ex)
             {
-                Banos = int.Parse(txtBanos.Text),
-                Camas = int.Parse(txtCamas.Text),
-                Capacidad = int.Parse(txtCapacidad.Text),
-                Numero = int.Parse(txtHabNum.Text),
-                Estado = chkHabEstado.IsChecked.Value ? true : false
-            };
-            if(hab.CrearHabitacion(hab))
-            {
-                MessageBox.Show("No se pudo agregar habitacion");
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
 
         void AgregarServicio()
         {
-            var ser = new Servicio
+            try
             {
-                Descripcion = txtDescSer.Text,
-                HotelID = hotelId,
-                Nombre = txtNombreSer.Text,
-                Estado = chkSerEstado.IsChecked.Value ? true : false
-            };
-            if(ser.CrearServicio(ser))
+                var ser = new Servicio
+                {
+                    Descripcion = txtDescSer.Text,
+                    HotelID = hotelId,
+                    Nombre = txtNombreSer.Text,
+                    Estado = chkSerEstado.IsChecked.Value ? true : false
+                };
+                if (ser.CrearServicio(ser))
+                {
+                    MessageBox.Show("No se pudo agregar servicio");
+                }
+            }
+            catch (Exception)
             {
-                MessageBox.Show("No se pudo agregar servicio");
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         void AgregarPrecioDia()
         {
-            int pre = 0;
-            if(!int.TryParse(txtPrecio.Text, out pre))
+            try
             {
-                MessageBox.Show("El precio debe ser numerico y solo numeros enteros");
-                return;
+                int pre = 0;
+                if (!int.TryParse(txtPrecio.Text, out pre))
+                {
+                    MessageBox.Show("El precio debe ser numerico y solo numeros enteros");
+                    return;
+                }
+                var precio = new PrecioDia
+                {
+                    Fecha = DateTime.Parse(dtPrecioDia.Text),
+                    Precio = int.Parse(txtPrecio.Text),
+                    HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
+
+                };
+                if (precio.CrearPrecioDia(precio))
+                {
+                    MessageBox.Show("No se pudo agregar precio");
+                }
             }
-            var precio = new PrecioDia
+            catch (Exception)
             {
-                Fecha = DateTime.Parse(dtPrecioDia.Text),
-                Precio = int.Parse(txtPrecio.Text),
-                HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
-               
-            };
-            if(precio.CrearPrecioDia(precio))
-            {
-                MessageBox.Show("No se pudo agregar precio");
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         void AgregarPromocion()
         {
-            int pre = 0;
-            if (!int.TryParse(txtPrecioPromo.Text, out pre))
+            try
             {
-                MessageBox.Show("El precio debe ser numerico y solo numeros enteros");
-                return;
+                int pre = 0;
+                if (!int.TryParse(txtPrecioPromo.Text, out pre))
+                {
+                    MessageBox.Show("El precio debe ser numerico y solo numeros enteros");
+                    return;
+                }
+                var promo = new Promocion
+                {
+                    Fecha = DateTime.Parse(dtPrecioDia.Text),
+                    Precio = int.Parse(txtPrecio.Text),
+                    HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
+                    Estado = true,
+                };
+                if (promo.CrearPromocion(promo))
+                {
+                    MessageBox.Show("No se pudo agregar promocion");
+                }
             }
-            var promo = new Promocion
+            catch (Exception)
             {
-                Fecha = DateTime.Parse(dtPrecioDia.Text),
-                Precio = int.Parse(txtPrecio.Text),
-                HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
-                Estado = true,
-            };
-            if(promo.CrearPromocion(promo))
-            {
-                MessageBox.Show("No se pudo agregar promocion");
-
+                MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
         void ValidarExistenciaDeHotel()
         {
             var hotel = new Hotel();
@@ -359,7 +462,7 @@ namespace Desktop.Presentation
 
         private void btnGuardarProd_Click(object sender, RoutedEventArgs e)
         {
-            
+
             AgregarProducto();
             CargarProductos();
             LimpiarCamposProductos();
