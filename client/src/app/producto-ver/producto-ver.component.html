@@ -1,22 +1,34 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID producto</th>
-      <th scope="col">Nombre producto</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Stock total</th>
-      <th scope="col">Stock diponible</th>
-      <th scope="col">Ubicacion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let Producto of Productos">
-      <th scope="row">{{Producto.ID}}</th>
-      <td>{{Producto.NOMBRE}}</td>
-      <td>{{Producto.DESCRIPCION}}</td>
-      <td>{{Producto.STOCK_TOTAL}}</td>
-      <td>{{Producto.STOCK_DISPONIBLE}}</td>
-      <td>{{Producto.UBICACION}}</td>
-    </tr>
-  </tbody>
-</table>
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+   Ver Productos</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID producto</th>
+                <th scope="col">Nombre producto</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Stock total</th>
+                <th scope="col">Stock diponible</th>
+                <th scope="col">Ubicacion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let Producto of Productos">
+                <th scope="row">{{Producto.ID}}</th>
+                <td>{{Producto.NOMBRE}}</td>
+                <td>{{Producto.DESCRIPCION}}</td>
+                <td>{{Producto.STOCK_TOTAL}}</td>
+                <td>{{Producto.STOCK_DISPONIBLE}}</td>
+                <td>{{Producto.UBICACION}}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Veranum</div>
+</div>

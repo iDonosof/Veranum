@@ -1,38 +1,50 @@
-<form [formGroup]="ReservaEliminarForm" (ngSubmit)="BuscarReserva()">
-  <div class="form-group">
-    <label for="rut">Rut cliente</label>
-    <input type="text" class="form-control" name="rut" placeholder="Ingrese rut de la persona sin guión ni digito verificador" formControlName="rut">
+
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+    Agregar Reserva</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <form [formGroup]="ReservaEliminarForm" (ngSubmit)="BuscarReserva()">
+            <div class="form-group">
+              <label for="rut">Rut cliente</label>
+              <input type="text" class="form-control" name="rut" placeholder="Ingrese rut de la persona sin guión ni digito verificador" formControlName="rut">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          
+          <br>
+          <br>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id reserva</th>
+                <th scope="col">Fecha inicio reserva</th>
+                <th scope="col">Fecha termino reserva</th>
+                <th scope="col">Total de la reserva</th>
+                <th scope="col">Medio de pago de la reserva</th>
+                <th scope="col">Id habitacion de la reserva</th>
+                <th> Eliminar </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="Reservas">
+                <th scope="row" colspan="6">No se encontraron reservas</th>
+              </tr>
+              <tr *ngFor="let Reserva of Reservas">
+                <th scope="row">{{Reserva.ID}}</th>
+                <th scope="row">{{Reserva.FECHA_INICIO}}</th>
+                <th scope="row">{{Reserva.FECHA_TERMINO}}</th>
+                <th scope="row">{{Reserva.TOTAL}}</th>
+                <th scope="row">{{Reserva.MEDIO_PAGO}}</th>
+                <th scope="row">{{Reserva.HABITACIONID}}</th>
+                <th (click)="EliminarReserva(Reserva.ID)"><i class="fas fa-trash-alt"></i></th>
+              </tr>
+            </tbody>
+          </table>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<br>
-<br>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id reserva</th>
-      <th scope="col">Fecha inicio reserva</th>
-      <th scope="col">Fecha termino reserva</th>
-      <th scope="col">Total de la reserva</th>
-      <th scope="col">Medio de pago de la reserva</th>
-      <th scope="col">Id habitacion de la reserva</th>
-      <th> Eliminar </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngIf="Reservas">
-      <th scope="row" colspan="6">No se encontraron reservas</th>
-    </tr>
-    <tr *ngFor="let Reserva of Reservas">
-      <th scope="row">{{Reserva.ID}}</th>
-      <th scope="row">{{Reserva.FECHA_INICIO}}</th>
-      <th scope="row">{{Reserva.FECHA_TERMINO}}</th>
-      <th scope="row">{{Reserva.TOTAL}}</th>
-      <th scope="row">{{Reserva.MEDIO_PAGO}}</th>
-      <th scope="row">{{Reserva.HABITACIONID}}</th>
-      <th (click)="EliminarReserva(Reserva.ID)"><i class="fas fa-trash-alt"></i></th>
-    </tr>
-  </tbody>
-</table>
+  <div class="card-footer small text-muted">Veranum</div>
+</div>

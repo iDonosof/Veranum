@@ -1,34 +1,46 @@
-<form [formGroup]="ReservaActualizarForm" (ngSubmit)="ActualizarReserva()">
-  <div class="form-group">
-    <label for="id">Codigo reserva</label>
-    <input type="text" class="form-control" formControlName="id" placeholder="Ingrese codigo de la reserva">
+
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+   Actualizar Reserva</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <form [formGroup]="ReservaActualizarForm" (ngSubmit)="ActualizarReserva()">
+            <div class="form-group">
+              <label for="id">Codigo reserva</label>
+              <input type="text" class="form-control" formControlName="id" placeholder="Ingrese codigo de la reserva">
+            </div>
+            <div class="form-group">
+              <label for="usuarioId">Rut del usuario</label>
+              <input type="text" class="form-control" formControlName="usuarioId" placeholder="Ingrese rut del usuario sin guion ni digito verificador">
+            </div>
+            <div class="form-group">
+              <label for="fechaInicio">Fecha inicio reserva</label>
+              <input type="date" class="form-control" formControlName="fechaInicio" placeholder="Ingrese una fecha">
+            </div>
+            <div class="form-group">
+              <label for="fechaTermino">Fecha termino reserva</label>
+              <input type="date" class="form-control" formControlName="fechaTermino" placeholder="Ingrese una fecha">
+            </div>
+            <div class="form-group">
+              <label for="total">Total de la reserva</label>
+              <input type="text" class="form-control" formControlName="total" placeholder="Ingrese el total de la reserva">
+            </div>
+            <div class="form-group">
+              <label for="medioPago">Medio de pago de la reserva</label>
+              <input type="text" class="form-control" formControlName="medioPago" placeholder="Ingrese el medio de pago de la reserva">
+            </div>
+            <div class="form-group">
+              <label for="HabitacionId">Id de la habitacion reservada</label>
+              <input type="text" class="form-control" formControlName="habitacionId" placeholder="Ingrese la id de la habitacion">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Actualizar</button> &nbsp;
+              <button (click)="BuscarReserva()" type="button" class="btn btn-primary">Buscara reserva</button>
+            </div>
+          </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="usuarioId">Rut del usuario</label>
-    <input type="text" class="form-control" formControlName="usuarioId" placeholder="Ingrese rut del usuario sin guion ni digito verificador">
-  </div>
-  <div class="form-group">
-    <label for="fechaInicio">Fecha inicio reserva</label>
-    <input type="date" class="form-control" formControlName="fechaInicio" placeholder="Ingrese una fecha">
-  </div>
-  <div class="form-group">
-    <label for="fechaTermino">Fecha termino reserva</label>
-    <input type="date" class="form-control" formControlName="fechaTermino" placeholder="Ingrese una fecha">
-  </div>
-  <div class="form-group">
-    <label for="total">Total de la reserva</label>
-    <input type="text" class="form-control" formControlName="total" placeholder="Ingrese el total de la reserva">
-  </div>
-  <div class="form-group">
-    <label for="medioPago">Medio de pago de la reserva</label>
-    <input type="text" class="form-control" formControlName="medioPago" placeholder="Ingrese el medio de pago de la reserva">
-  </div>
-  <div class="form-group">
-    <label for="HabitacionId">Id de la habitacion reservada</label>
-    <input type="text" class="form-control" formControlName="habitacionId" placeholder="Ingrese la id de la habitacion">
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Actualizar</button> &nbsp;
-    <button (click)="BuscarReserva()" type="button" class="btn btn-primary">Buscara reserva</button>
-  </div>
-</form>
+  <div class="card-footer small text-muted">Veranum</div>
+</div>

@@ -1,35 +1,46 @@
-<form [formGroup]="ActualizarProductoForm" (ngSubmit)="ActualizarProducto()">
-  <div class="form-group">
-    <label for="idProducto">Producto</label>
-    <select name="idProducto" id="idProducto" formControlName="idProducto" class="form-control" (change)="ProductoChanged($event.target.value)">
-      <option *ngFor="let Producto of Productos" value={{Producto.ID}}>{{Producto.NOMBRE}}</option>
-    </select>
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+    Actualizar Producto</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <form [formGroup]="ActualizarProductoForm" (ngSubmit)="ActualizarProducto()">
+            <div class="form-group">
+              <label for="idProducto">Producto</label>
+              <select name="idProducto" id="idProducto" formControlName="idProducto" class="form-control" (change)="ProductoChanged($event.target.value)">
+                <option *ngFor="let Producto of Productos" value={{Producto.ID}}>{{Producto.NOMBRE}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nombre">Nombre del producto</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar nombre del producto" formControlName="nombre">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripcion del producto</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar descripcion dele producto" formControlName="descripcion">
+            </div>
+            <div class="form-group">
+              <label for="stockTotal">Stock total del producto</label>
+              <input type="text" class="form-control" id="stockTotal" name="stockTotal" placeholder="Ingresar stock total del producto" formControlName="stockTotal">
+            </div>
+            <div class="form-group">
+              <label for="stockDisponible">Stock disponible del producto</label>
+              <input type="text" class="form-control" id="stockDisponible" name="stockDisponible" placeholder="Ingresar stock disponible del producto" formControlName="stockDisponible">
+            </div>
+            <div class="form-group">
+              <label for="ubicacion">Ubicacion del producto</label>
+              <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Ingresar ubicacion del producto" formControlName="ubicacion">
+            </div>
+            <div class="form-group">
+              <label for="hotel">Hotel</label>
+              <select name="hotel" id="hotel" formControlNmae="hotel" class="form-control">
+                <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
+              </select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Actualizar">
+          </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="nombre">Nombre del producto</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar nombre del producto" formControlName="nombre">
-  </div>
-  <div class="form-group">
-    <label for="descripcion">Descripcion del producto</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar descripcion dele producto" formControlName="descripcion">
-  </div>
-  <div class="form-group">
-    <label for="stockTotal">Stock total del producto</label>
-    <input type="text" class="form-control" id="stockTotal" name="stockTotal" placeholder="Ingresar stock total del producto" formControlName="stockTotal">
-  </div>
-  <div class="form-group">
-    <label for="stockDisponible">Stock disponible del producto</label>
-    <input type="text" class="form-control" id="stockDisponible" name="stockDisponible" placeholder="Ingresar stock disponible del producto" formControlName="stockDisponible">
-  </div>
-  <div class="form-group">
-    <label for="ubicacion">Ubicacion del producto</label>
-    <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Ingresar ubicacion del producto" formControlName="ubicacion">
-  </div>
-  <div class="form-group">
-    <label for="hotel">Hotel</label>
-    <select name="hotel" id="hotel" formControlNmae="hotel" class="form-control">
-      <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
-    </select>
-  </div>
-  <input type="submit" class="btn btn-primary" value="Actualizar">
-</form>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

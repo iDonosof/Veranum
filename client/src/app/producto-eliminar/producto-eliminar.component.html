@@ -1,9 +1,20 @@
-<form [formGroup]="productoEliminarForm" (ngSubmit)="EliminarProducto()">
-    <div class="form-group">
-        <label for="idProducto">Producto</label>
-        <select name="idProducto" id="idProducto" formControlName="idProducto" class="form-control">
-            <option *ngFor="let Producto of Productos" value={{Producto.ID}}>{{Producto.NOMBRE}}</option>
-        </select>
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+   Eliminar Producto</div>
+  <div class="card-body">
+    <div class="table-responsive">
+            <form [formGroup]="productoEliminarForm" (ngSubmit)="EliminarProducto()">
+                    <div class="form-group">
+                        <label for="idProducto">Producto</label>
+                        <select name="idProducto" id="idProducto" formControlName="idProducto" class="form-control">
+                            <option *ngFor="let Producto of Productos" value={{Producto.ID}}>{{Producto.NOMBRE}}</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Eliminar" class="form-control">
+                </form>                
     </div>
-    <input type="submit" value="Eliminar" class="form-control">
-</form>
+  </div>
+  <div class="card-footer small text-muted">Veranum</div>
+</div>

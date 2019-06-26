@@ -1,53 +1,61 @@
-
 <br>
-<form [formGroup]="UsuarioEliminarForm" (ngSubmit)="EliminarUsuario()">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="rut">Rut del usuario</label>
-      <input type="number" class="form-control" id="rut" name="rut" formControlName="rut" placeholder="Ingrese el rut del usuario a eliminar">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="nombre">Nombre del usuario</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre del usuario">
+<div class="card mb-3">
+  <div class="card-header">
+   Eliminar Usuario</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <form [formGroup]="UsuarioEliminarForm" (ngSubmit)="EliminarUsuario()">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="rut">Rut del usuario</label>
+                <input type="number" class="form-control" id="rut" name="rut" formControlName="rut" placeholder="Ingrese el rut del usuario a eliminar">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="nombre">Nombre del usuario</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre del usuario">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="apellido">Apellido del usuario</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" formControlName="apellido" placeholder="Ingrese el apellido del usuario">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="Telefono">Telefono del usuario</label>
+                <input type="number" class="form-control" id="telefono" name="telefono" formControlName="telefono" placeholder="Ingrese el telefono del usuario">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="direccion">Direccion del usuario</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" formControlName="direccion" placeholder="Ingrese direccion del usuario">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="correo">Correo del usuario</label>
+                <input type="email" class="form-control" id="correo" name="correo" formControlName="correo" placeholder="Ingrese el correo del usuario">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nombreUsuario">Nombre de usuario del usuario</label>
+                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" formControlName="nombreUsuario" placeholder="Ingrese nombre de usuario del usuario">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="contrasena">Contraseña del usuario</label>
+                <input type="password" class="form-control" id="contrasena" name="contrasena" formControlName="contrasena" placeholder="Ingrese el contraseña del usuario">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="empresaId">Empresa del usuario</label>
+                <input type="text" class="form-control" id="empresaId" name="empresaId" formControlName="empresaId" placeholder="Ingrese la empresa a la cual pertenece">
+              </div>
+            </div>
+            
+            <button class="btn btn-primary" type="submit">Eliminar usuario</button>&nbsp;
+            <button class="btn btn-primary" type="button" (click)="BuscarUsuario()">Buscar usuario</button>
+          </form>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="apellido">Apellido del usuario</label>
-      <input type="text" class="form-control" id="apellido" name="apellido" formControlName="apellido" placeholder="Ingrese el apellido del usuario">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="Telefono">Telefono del usuario</label>
-      <input type="number" class="form-control" id="telefono" name="telefono" formControlName="telefono" placeholder="Ingrese el telefono del usuario">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="direccion">Direccion del usuario</label>
-      <input type="text" class="form-control" id="direccion" name="direccion" formControlName="direccion" placeholder="Ingrese direccion del usuario">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="correo">Correo del usuario</label>
-      <input type="email" class="form-control" id="correo" name="correo" formControlName="correo" placeholder="Ingrese el correo del usuario">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombreUsuario">Nombre de usuario del usuario</label>
-      <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" formControlName="nombreUsuario" placeholder="Ingrese nombre de usuario del usuario">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="contrasena">Contraseña del usuario</label>
-      <input type="password" class="form-control" id="contrasena" name="contrasena" formControlName="contrasena" placeholder="Ingrese el contraseña del usuario">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="empresaId">Empresa del usuario</label>
-      <input type="text" class="form-control" id="empresaId" name="empresaId" formControlName="empresaId" placeholder="Ingrese la empresa a la cual pertenece">
-    </div>
-  </div>
-  
-  <button class="btn btn-primary" type="submit">Eliminar usuario</button>&nbsp;
-  <button class="btn btn-primary" type="button" (click)="BuscarUsuario()">Buscar usuario</button>
-</form>
+  <div class="card-footer small text-muted">Veranum</div>
+</div>
