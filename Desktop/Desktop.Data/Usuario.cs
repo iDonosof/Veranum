@@ -175,15 +175,15 @@ namespace Desktop.Data
         public Usuario ObtenterUsuarioPorLogin(string nombreUsuario, string contrasena)
         {
             var usrs =  ObtenerUsuarios();
-            return usrs.FirstOrDefault(u => u.NombreUsuario == nombreUsuario && u.Contrasena == contrasena);
-            //foreach(var usr in usrs)
-            //{
-            //    if (usr.NombreUsuario == nombreUsuario && usr.Contrasena == contrasena)
-            //    {
-            //        return usr;
-            //    }
-            //}
-            //return null;
+            //return usrs.FirstOrDefault(u => u.NombreUsuario == nombreUsuario && u.Contrasena == contrasena);
+            foreach (var usr in usrs)
+            {
+                if (usr.NombreUsuario.ToLower() == nombreUsuario.ToLower() && usr.Contrasena.ToLower() == contrasena.ToLower())
+                {
+                    return usr;
+                }
+            }
+            return null;
         }
     }
 }

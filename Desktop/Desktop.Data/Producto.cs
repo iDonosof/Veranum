@@ -13,8 +13,8 @@ namespace Desktop.Data
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public int StockTotal { get; set; }
-        public int StockDisponible { get; set; }
+        public int Stock_Total { get; set; }
+        public int Stock_Disponible { get; set; }
         public string Ubicacion { get; set; }
         public bool Estado { get; set; }
         public int HotelID { get; set; }
@@ -35,8 +35,8 @@ namespace Desktop.Data
             {
                 { "nombre", producto.Nombre },
                 { "descripcion", producto.Descripcion },
-                { "stockTotal", producto.StockTotal.ToString() },
-                { "stockDisponible", producto.StockDisponible.ToString() },            
+                { "stockTotal", producto.Stock_Total.ToString() },
+                { "stockDisponible", producto.Stock_Disponible.ToString() },            
                 { "ubicacion", producto.Ubicacion },
                 { "hotelId", producto.HotelID.ToString() },
             };
@@ -52,8 +52,8 @@ namespace Desktop.Data
                 { "id", producto.ID.ToString() },
                 { "nombre", producto.Nombre },
                 { "descripcion", producto.Descripcion },
-                { "stockTotal", producto.StockTotal.ToString() },
-                { "stockDisponible", producto.StockDisponible.ToString() },
+                { "stockTotal", producto.Stock_Total.ToString() },
+                { "stockDisponible", producto.Stock_Disponible.ToString() },
                 { "ubicacion", producto.Ubicacion },
                 { "hotelId", producto.HotelID.ToString() },
             };

@@ -237,8 +237,8 @@ namespace Desktop.Presentation
                 Descripcion = txtProdDesc.Text,
                 HotelID = hotelId,
                 Nombre = txtProdNombre.Text,
-                StockDisponible = int.Parse(txtStockDispo.Text),
-                StockTotal = int.Parse(txtStockTotal.Text),
+                Stock_Disponible = int.Parse(txtStockDispo.Text),
+                Stock_Total = int.Parse(txtStockTotal.Text),
                 Ubicacion = txtUbiacion.Text,
                 Estado = chkProdEstado.IsChecked.Value ? true : false
             };
