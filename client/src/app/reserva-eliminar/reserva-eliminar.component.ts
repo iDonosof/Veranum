@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgControlStatus, FormGroup } from '@angular/forms';  
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,10 +11,12 @@ export class ReservaEliminarComponent implements OnInit {
 
   Reservas = [];
   ReservaEliminarForm : FormGroup;
+  Correcto : boolean
 
   constructor( private formBuilder : FormBuilder, private http : HttpClient ) { 
+    this.Correcto = false;
     this.ReservaEliminarForm = this.formBuilder.group({
-      rut: ['']
+      rut: ['',[Validators.required, Validators.nullValidator, Validators.minLength(8)]]
     });
   }
 
@@ -40,18 +42,29 @@ export class ReservaEliminarComponent implements OnInit {
         console.log( error );
       });
     }
+    
   }
 
   BuscarReserva ( ) {
-    this.http.post('http://127.0.0.1:3000/obtenerReservasPorUsuario', { 
-      rut: this.ReservaEliminarForm.controls.rut.value
-    }).subscribe( ( res : any[] ) => {
-      if( res ) 
-        this.Reservas = res;
-    },
-    ( error ) => {
-      console.log( error );
-    });
+    if(!this.ReservaEliminarForm.invalid) {
+      this.http.post('http://127.0.0.1:3000/obtenerReservasPorUsuario', { 
+        rut: this.ReservaEliminarForm.controls.rut.value
+      }).subscribe( ( res : any[] ) => {
+        if( res ) 
+          this.Reservas = res;
+      },
+      ( error ) => {
+        console.log( error );
+      });
+    }
+    else {
+      this.Correcto = true;
+    }
+  }
+
+  LimpiarCampos() {
+    this.ReservaEliminarForm.controls.rut.setValue('');
+    this.Correcto = false;
   }
 
 }

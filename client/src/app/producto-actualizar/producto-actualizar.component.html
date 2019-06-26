@@ -32,4 +32,8 @@
     </select>
   </div>
   <input type="submit" class="btn btn-primary" value="Actualizar">
+  <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+      &nbsp;
+    <i class="fas fa-exclamation-triangle alert-validation"></i>
+  </a>
 </form>

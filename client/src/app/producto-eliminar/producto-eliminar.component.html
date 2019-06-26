@@ -6,4 +6,8 @@
         </select>
     </div>
     <input type="submit" value="Eliminar" class="form-control">
+    <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+        &nbsp;
+        <i class="fas fa-exclamation-triangle alert-validation"></i>
+    </a>
 </form>

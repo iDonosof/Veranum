@@ -1,10 +1,9 @@
-
 <br>
 <form [formGroup]="UsuarioEliminarForm" (ngSubmit)="EliminarUsuario()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="rut">Rut del usuario</label>
-      <input type="number" class="form-control" id="rut" name="rut" formControlName="rut" placeholder="Ingrese el rut del usuario a eliminar">
+      <input type="number" class="form-control" id="rut" name="rut" formControlName="rut" placeholder="Ingrese el rut del usuario a eliminar sin guión ni digito verificar">
     </div>
     <div class="form-group col-md-6">
       <label for="nombre">Nombre del usuario</label>
@@ -50,4 +49,8 @@
   
   <button class="btn btn-primary" type="submit">Eliminar usuario</button>&nbsp;
   <button class="btn btn-primary" type="button" (click)="BuscarUsuario()">Buscar usuario</button>
+  <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+      &nbsp;
+    <i class="fas fa-exclamation-triangle alert-validation"></i>
+  </a>
 </form>

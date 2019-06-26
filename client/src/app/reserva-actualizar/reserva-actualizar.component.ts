@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgControlStatus, FormGroup } from '@angular/forms';  
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,16 +10,18 @@ import { HttpClient } from '@angular/common/http';
 export class ReservaActualizarComponent implements OnInit {
 
   ReservaActualizarForm : FormGroup;
+  Correcto : boolean;
 
   constructor( private formBuilder : FormBuilder, private http : HttpClient ) { 
+    this.Correcto = false;
     this.ReservaActualizarForm = this.formBuilder.group( {
-      id: [''],
-      fechaInicio: [''],
-      fechaTermino: [''],
-      total: [''],
-      medioPago: [''],
-      habitacionId: [''],
-      usuarioId: ['']
+      id: ['', [Validators.required, Validators.min(0)]],
+      fechaInicio: ['', [Validators.required]],
+      fechaTermino: ['', [Validators.required]],
+      total: ['', Validators.required, Validators.min(0)],
+      medioPago: [0, [Validators.required, Validators.min(1), Validators.max(2)]],
+      habitacionId: ['', Validators.required, Validators.min(0)],
+      usuarioId: ['', Validators.required, Validators.min(0)]
     });
     this.ReservaActualizarForm.controls.total.disable();
     this.ReservaActualizarForm.controls.habitacionId.disable();
@@ -30,19 +32,25 @@ export class ReservaActualizarComponent implements OnInit {
 
 
   ActualizarReserva() {
-    if(confirm('¿Seguro que desea actualizar la reserva?')) {
-      this.http.post('http://127.0.0.1:3000/actualizarReserva', {
-        id: this.ReservaActualizarForm.controls.id.value,
-        fechaInicio: this.ReservaActualizarForm.controls.fechaInicio.value,
-        fechaTermino: this.ReservaActualizarForm.controls.fechaTermino.value
-      }).subscribe( ( res : any ) => {
-        if( +res == 1 ) {
-          alert('Reserva actualizada correctamente');
-        }
-      },
-      ( error ) => {
-        console.log( error );
-      });
+    if(!this.ReservaActualizarForm) {
+      if(confirm('¿Seguro que desea actualizar la reserva?')) {
+        this.http.post('http://127.0.0.1:3000/actualizarReserva', {
+          id: this.ReservaActualizarForm.controls.id.value,
+          fechaInicio: this.ReservaActualizarForm.controls.fechaInicio.value,
+          fechaTermino: this.ReservaActualizarForm.controls.fechaTermino.value
+        }).subscribe( ( res : any ) => {
+          if( +res == 1 ) {
+            alert('Reserva actualizada correctamente');
+            this.LimpiarCampos();
+          }
+        },
+        ( error ) => {
+          console.log( error );
+        });
+      }
+    }
+    else {
+      this.Correcto = true;
     }
   }
 
@@ -80,5 +88,15 @@ export class ReservaActualizarComponent implements OnInit {
     this.ReservaActualizarForm.controls.medioPago.setValue(row.MEDIO_PAGO);
     this.ReservaActualizarForm.controls.habitacionId.setValue(row.HABITACIONID);
     this.ReservaActualizarForm.controls.usuarioId.setValue(row.USUARIOID);
+  }
+
+  LimpiarCampos() {
+    this.ReservaActualizarForm.controls.id.setValue('');
+    this.ReservaActualizarForm.controls.fechaInicio.setValue('');
+    this.ReservaActualizarForm.controls.fechaTermino.setValue('');
+    this.ReservaActualizarForm.controls.total.setValue('');
+    this.ReservaActualizarForm.controls.medioPago.setValue('');
+    this.ReservaActualizarForm.controls.habitacionId.setValue('');
+    this.ReservaActualizarForm.controls.usuarioId.setValue('');
   }
 }
