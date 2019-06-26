@@ -1,19 +1,19 @@
 <form [formGroup]="HabitacionForm" (ngSubmit)="IngresarHabitacion()">
   <div class="form-group">
     <label for="numero">Numero de la habitacion</label>
-    <input type="text" class="form-control" id="numero" name="numero" aria-describedby="emailHelp" placeholder="Numero de la habitacion" formControlName="numero">
+    <input type="number" class="form-control" id="numero" name="numero" aria-describedby="emailHelp" placeholder="Numero de la habitacion" formControlName="numero">
   </div>
   <div class="form-group">
     <label for="camas">Cantidad de camas</label>
-    <input type="text" class="form-control" id="camas" name="camas" aria-describedby="emailHelp" placeholder="camas" formControlName="camas">
+    <input type="number" class="form-control" id="camas" name="camas" aria-describedby="emailHelp" placeholder="camas" formControlName="camas">
   </div>
   <div class="form-group">
     <label for="capacidad">Capacidad</label>
-    <input type="text" class="form-control" id="capacidad" name="capacidad" aria-describedby="emailHelp" placeholder="Capacidad" formControlName="capacidad">
+    <input type="number" class="form-control" id="capacidad" name="capacidad" aria-describedby="emailHelp" placeholder="Capacidad" formControlName="capacidad">
   </div>
   <div class="form-group">
     <label for="banos">Cantidad de baños</label>
-    <input type="number" class="form-control" id="banos" name="banos" aria-describedby="emailHelp" placeholder="banos" formControlName="banos">
+    <input type="number" class="form-control" id="banos" name="banos" aria-describedby="emailHelp" placeholder="Baños" formControlName="banos">
   </div>
   <div class="form-group">
     <label for="hotel">Hotel</label>
@@ -22,4 +22,8 @@
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Ingresar</button>
+  <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+      &nbsp;
+    <i class="fas fa-exclamation-triangle alert-validation"></i>
+  </a>
 </form>

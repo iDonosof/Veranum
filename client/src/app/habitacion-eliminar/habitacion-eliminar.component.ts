@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgControlStatus, FormGroup } from '@angular/forms';  
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,13 +12,14 @@ export class HabitacionEliminarComponent implements OnInit {
   Hoteles = [];
   Habitaciones = [];
   HabitacionesPorHotel = [];
-
   EliminarForm : FormGroup;
+  Correcto : boolean
 
   constructor( private formBuilder : FormBuilder, private http : HttpClient ) {
+    this.Correcto = false;
     this.EliminarForm = this.formBuilder.group({
-      hotelId: [''],
-      habitacionId: ['']
+      hotelId: ['', [ Validators.required, Validators.min(0)]],
+      habitacionId: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -28,20 +29,26 @@ export class HabitacionEliminarComponent implements OnInit {
   }
 
   Eliminar () {
-    this.http.post( 'http://127.0.0.1:3000/actualizarEstadoHabitacion' , {
-      id: this.EliminarForm.controls.habitacionId.value,
-      estado: 0
-    }).subscribe( ( res : any) => {
-      if( +res == 1 ){
-        alert('Eliminado exitosamente');
-      }else
-      {
-        alert('Ocurrio un error');
-      }
-    },
-    (error) => {
-      console.log(error);
-    });
+    if(!this.EliminarForm.invalid) {
+      this.http.post( 'http://127.0.0.1:3000/actualizarEstadoHabitacion' , {
+        id: this.EliminarForm.controls.habitacionId.value,
+        estado: 0
+      }).subscribe( ( res : any) => {
+        if( +res == 1 ){
+          alert('Eliminado exitosamente');
+          this.LimpiarCampos();
+        }else
+        {
+          alert('Ocurrio un error');
+        }
+      },
+      (error) => {
+        console.log(error);
+      });
+    }
+    else {
+      this.Correcto = true;
+    }
   }
 
   CargarHoteles () {
@@ -68,6 +75,12 @@ export class HabitacionEliminarComponent implements OnInit {
       if(h.HOTELID == e)
         this.HabitacionesPorHotel.push( h );
     });
+    this.EliminarForm.controls.habitacionId.setValue(this.HabitacionesPorHotel[0].ID);
   }
 
+  LimpiarCampos() {
+    this.EliminarForm.controls.hotelId.setValue(this.Hoteles[0].ID);
+    this.EliminarForm.controls.habitacionId.setValue(this.Habitaciones[0].ID);
+    this.Correcto = false;
+  }
 }
