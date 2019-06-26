@@ -1,30 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/" ><img src="../../assets/logo.png"  alt="" style="width: 100px; height: 60px;"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" *ngIf="user.rut != null && user.rut != undefined">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Inicio <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item dropdown" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown"  *ngIf="user.rut != null && user.rut != undefined" >
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Habitaciones
+            Habitaciones
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="HabitacionLista">Ver habitaciones</a>
-          <div class="dropdown-divider" *ngIf="user.tipo > 3"></div>
-          <a class="dropdown-item" routerLink="HabitacionInsertar" *ngIf="user.tipo > 3">Agregar habitación</a>
-          <a class="dropdown-item" routerLink="HabitacionActualizar" *ngIf="user.tipo > 3">Editar habitación</a>
-          <a class="dropdown-item" routerLink="HabitacionEliminar" *ngIf="user.tipo > 4">Eliminar habitación</a>
+            <a class="dropdown-item" routerLink="HabitacionLista">Ver habitaciones</a>
+            <div class="dropdown-divider" *ngIf="user.tipo > 3"></div>
+            <a class="dropdown-item" routerLink="HabitacionInsertar" *ngIf="user.tipo > 3">Agregar habitación</a>
+            <a class="dropdown-item" routerLink="HabitacionActualizar" *ngIf="user.tipo > 3">Editar habitación</a>
+            <a class="dropdown-item" routerLink="HabitacionEliminar" *ngIf="user.tipo > 4">Eliminar habitación</a>
         </div>
       </li>
       <li class="nav-item dropdown" *ngIf="user.tipo > 3">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Productos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="ProductoVer">Ver productos</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Productos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="ProductoVer">Ver productos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="ProductoInsertar">Agregar productos</a>
           <a class="dropdown-item" routerLink="ProductoActualizar">Editar productos</a>
@@ -32,25 +31,22 @@
         </div>
       </li>
       <li class="nav-item dropdown" *ngIf="user.tipo > 3">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Reservas
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="ReservaVer">Ver reservas</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reservas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="ReservaVer">Ver reservas</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="ReservaInsertar">Agregar reservas</a>
           <a class="dropdown-item" routerLink="ReservaActualizar">Editar reservas</a>
           <a class="dropdown-item" routerLink="ReservaEliminar" *ngIf="user.tipo > 4">Eliminar reservas</a>
         </div>
       </li>
-      <li class="nav-item" *ngIf="user.tipo < 3">
-          <a class="nav-link" routerLink="ReservaInsertar">Agregar reserva <span class="sr-only"></span></a>
-        </li>
       <li class="nav-item dropdown" *ngIf="user.tipo > 3">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuario
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Usuarios
+          </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  *ngIf="user.tipo > 3">
           <a class="dropdown-item" routerLink="UsuarioVer">Ver Usuarios</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="UsuarioInsertar">Agregar usuario</a>
@@ -58,27 +54,16 @@
           <a class="dropdown-item" routerLink="UsuarioEliminar" *ngIf="user.tipo > 4">Eliminar usuario</a>
         </div>
       </li>
+
+
       
     </ul>
-    <div *ngIf="user.rut == null || user.rut == undefined">
-      <span class="navbar-text">
-        <a routerLink="Login">Login</a>
-      </span>
-      <span class="navbar-text">
-        <a routerLink="Signup">Registrarse</a>
-      </span>
-    </div>
-    <span class="navbar-text" *ngIf="user.rut != null && user.rut != undefined">
-      {{ user.username }}
-    </span>
-    <span class="navbar-text" *ngIf="user.rut != null && user.rut != undefined">
-        <button (click)="CerrarSesion()">Cerrar Sesion</button>
-    </span>
-    <span class="navbar-text">
-      Valor USD Hoy: {{ usd }}
-    </span>
-    <!-- <span class="navbar-text">
-      Clima Hoy: {{ usd }}
-    </span> -->
+    <button type="button" class="btn btn-outline-primary"> Valor&nbsp;USD&nbsp;Hoy&nbsp;:&nbsp;{{ usd }}</button>&nbsp;&nbsp;
+    <img src="../../assets/agregar-usuario.png"  alt="" style="width: 3%; height: 3%;" *ngIf="user.rut != null && user.rut != undefined">
+    <a class="nav-link mr-sm-2" *ngIf="user.rut != null && user.rut != undefined">  {{user.username}}</a>    
+    <button class="btn btn-outline-danger my-2 my-sm-0"  (click)="CerrarSesion()" type="submit" *ngIf="user.rut != null && user.rut != undefined" >Log&nbsp;out</button>&nbsp;
+    <button type="button" routerLink="Login" class="btn btn-outline-info" *ngIf="user.rut == null || user.rut == undefined" >Login</button>&nbsp;
+    <button type="button" routerLink="Signup"  class="btn btn-outline-warning"  *ngIf="user.rut == null || user.rut == undefined" >Signup</button>
+
   </div>
 </nav>
