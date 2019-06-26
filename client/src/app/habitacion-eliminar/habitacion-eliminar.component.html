@@ -21,17 +21,5 @@
       </form>
     </div>
   </div>
-  <div class="form-group">
-    <label for="habitacion">Habitaciones</label>
-    <select class="form-control" id="habitacion" formControlName="habitacionId">
-      <option *ngFor="let Habitacion of HabitacionesPorHotel" value={{Habitacion.ID}}>{{Habitacion.NUMERO}}</option>
-    </select>
-  </div>
-  <input type="submit" class="btn btn-primary" value="Eliminar">
-  <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
-      &nbsp;
-    <i class="fas fa-exclamation-triangle alert-validation"></i>
-  </a>
-</form>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>

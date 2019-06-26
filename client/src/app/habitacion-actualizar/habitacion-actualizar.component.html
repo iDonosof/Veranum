@@ -34,31 +34,11 @@
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Ingresar</button>
+        <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+            <i class="fas fa-exclamation-triangle alert-validation"></i>
+          </a>
       </form>
     </div>
   </div>
-  <div class="form-group">
-    <label for="camas">Cantidad de camas</label>
-    <input type="text" class="form-control" id="camas" name="camas" aria-describedby="emailHelp" placeholder="camas" formControlName="camas">
-  </div>
-  <div class="form-group">
-    <label for="capacidad">Capacidad</label>
-    <input type="text" class="form-control" id="capacidad" name="capacidad" aria-describedby="emailHelp" placeholder="Capacidad" formControlName="capacidad">
-  </div>
-  <div class="form-group">
-    <label for="banos">Cantidad de baños</label>
-    <input type="number" class="form-control" id="banos" name="banos" aria-describedby="emailHelp" placeholder="banos" formControlName="banos">
-  </div>
-  <div class="form-group">
-    <label for="hotel">Hotel</label>
-    <select class="form-control" id="hotel" formControlName="hotelId">
-      <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Ingresar</button>&nbsp;
-  <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
-    <i class="fas fa-exclamation-triangle alert-validation"></i>
-  </a>
-</form>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
