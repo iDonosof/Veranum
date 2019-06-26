@@ -1,15 +1,27 @@
-<form [formGroup]="EliminarForm" (ngSubmit)="Eliminar()">
-  <div class="form-group">
-    <label for="hotel">Hoteles</label>
-    <select class="form-control" id="hotel" formControlName="hotelId" (change)="HotelChanged($event.target.value)">
-      <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
-    </select>
+
+
+<br>
+<div class="card mb-3">
+  <div class="card-header">
+    Eliminar Habitacion</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <form [formGroup]="EliminarForm" (ngSubmit)="Eliminar()">
+        <div class="form-group">
+          <label for="hotel">Hoteles</label>
+          <select class="form-control" id="hotel" formControlName="hotelId" (change)="HotelChanged($event.target.value)">
+            <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="habitacion">Habitaciones</label>
+          <select class="form-control" id="habitacion" formControlName="habitacionId">
+            <option *ngFor="let Habitacion of HabitacionesPorHotel" value={{Habitacion.ID}}>{{Habitacion.NUMERO}}</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Eliminar">
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="habitacion">Habitaciones</label>
-    <select class="form-control" id="habitacion" formControlName="habitacionId">
-      <option *ngFor="let Habitacion of HabitacionesPorHotel" value={{Habitacion.ID}}>{{Habitacion.NUMERO}}</option>
-    </select>
-  </div>
-  <input type="submit" class="btn btn-primary" value="Eliminar">
-</form>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
