@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms'; 
+import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-producto-eliminar',
@@ -41,11 +42,31 @@ export class ProductoEliminarComponent implements OnInit {
       estado: 2
       }).subscribe( ( res : any ) => {
         if( +res == 1) {
-          alert('Producto eliminado');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'success',
+            title: 'Producto eliminado'
+          });
           this.LimpiarCampos();
         }
         else {
-          alert('Ocurrio un error, intentelo mas tarde');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'error',
+            title: 'Ocurrio un error, intentelo mas tarde'
+          });
         }
         this.CargarProductos();
       },

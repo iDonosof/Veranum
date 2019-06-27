@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataManagerService } from '../data-manager.service';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-reserva-insertar',
   templateUrl: './reserva-insertar.component.html',
@@ -76,7 +76,17 @@ export class ReservaInsertarComponent implements OnInit {
         'usuarioId': localStorage.getItem('rut')
       })
       .subscribe((res : any) => {
-        alert('Se agrego la reserva exitosamente');
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        
+        Toast.fire({
+          type: 'success',
+          title: 'Se agrego la reserva exitosamente'
+        });
       }, 
       (error) => {
         console.log(error);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators, FormControl } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario-eliminar',
@@ -47,7 +48,17 @@ export class UsuarioEliminarComponent implements OnInit {
         this.UsuarioEliminarForm.controls.empresaId.setValue(res[0].EMPRESAID == null? 'No pertenece a alguna empresa' : res[0].EMPRESAID);
       }
       else {
-        alert('Usuario no encontrado');
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        
+        Toast.fire({
+          type: 'error',
+          title: 'Usuario no encontrado'
+        });
       }
     },
     ( error ) => {
@@ -63,11 +74,31 @@ export class UsuarioEliminarComponent implements OnInit {
           estado: 2
         }).subscribe( ( res : any ) => {
           if( +res == 1 ) {
-            alert('Eliminado exitosamente');
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            
+            Toast.fire({
+              type: 'success',
+              title: 'Eliminado exitosamente'
+            });
             this.LimpiarCampos();
           }
           else {
-            alert('Ocurrio un error, vuelva a intentarlo mas tarde.')
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            
+            Toast.fire({
+              type: 'error',
+              title: 'Ocurrio un error, vuelva a intentarlo mas tarde.'
+            });
           }
         },
         ( error ) => {

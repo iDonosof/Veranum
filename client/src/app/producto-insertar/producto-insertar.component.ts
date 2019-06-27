@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';   
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms'; 
+import Swal from 'sweetalert2';  
 
 @Component({
   selector: 'app-producto-insertar',
@@ -40,7 +41,17 @@ export class ProductoInsertarComponent implements OnInit {
         hotelId: this.InsertarProductoForm.controls.hotel.value
       }).subscribe( ( res : any ) => {
         if( +res == 1) {
-          alert('Producto ingresado exitosamente');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'success',
+            title: 'Producto ingresado exitosamente'
+          });
           this.LimpiarCampos();
         }
       },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-habitacion-eliminar',
@@ -35,11 +36,34 @@ export class HabitacionEliminarComponent implements OnInit {
         estado: 0
       }).subscribe( ( res : any) => {
         if( +res == 1 ){
-          alert('Eliminado exitosamente');
+          let Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+  
+          Toast.fire({
+            type: 'success',
+            title: 'Eliminado exitosamente'
+          });
+
           this.LimpiarCampos();
         }else
         {
-          alert('Ocurrio un error');
+          let Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+  
+          Toast.fire({
+            type: 'error',
+            title: 'Ocurrio un error'
+          });
+
+          
         }
       },
       (error) => {

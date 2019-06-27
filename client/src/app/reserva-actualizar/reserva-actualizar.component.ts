@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva-actualizar',
@@ -40,7 +41,17 @@ export class ReservaActualizarComponent implements OnInit {
           fechaTermino: this.ReservaActualizarForm.controls.fechaTermino.value
         }).subscribe( ( res : any ) => {
           if( +res == 1 ) {
-            alert('Reserva actualizada correctamente');
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            
+            Toast.fire({
+              type: 'success',
+              title: 'Reserva actualizada correctamente'
+            });
             this.LimpiarCampos();
           }
         },

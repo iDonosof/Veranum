@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-habitacion-insertar',
@@ -23,6 +24,8 @@ export class HabitacionInsertarComponent implements OnInit {
     });
   }
 
+  
+  
   ngOnInit() {
     this.http.get( 'http://127.0.0.1:3000/obtenerHoteles' ).subscribe( ( res : any[]) => {
       this.Hoteles = res;
@@ -43,7 +46,17 @@ export class HabitacionInsertarComponent implements OnInit {
         hotelId: this.HabitacionForm.controls.hotel.value
       }).subscribe( ( res : any) => {
         if( +res == 1) {
-          alert('La habitacion se ha agregado correctamente');
+          let Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          Toast.fire({
+            type: 'success',
+            title: 'La habitacion se ha agregado correctamente'
+          })
         }
       },
       ( error ) => {

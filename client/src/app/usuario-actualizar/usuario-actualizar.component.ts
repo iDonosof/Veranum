@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario-actualizar',
@@ -57,11 +58,31 @@ export class UsuarioActualizarComponent implements OnInit {
           empresaid: this.UsuarioActualizarForm.controls.empresaId.value
         }).subscribe( ( res : any ) => {
           if( +res == 1 ) {
-            alert('Usuario actualizado exitosamente')
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            
+            Toast.fire({
+              type: 'success',
+              title: 'Usuario actualizado exitosamente'
+            });
             this.LimpiarCampos();
           }
           else{
-            alert('Ocurrio un error, intentar mas tarde.');
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            
+            Toast.fire({
+              type: 'error',
+              title: 'Ocurrio un error, intentar mas tarde.'
+            });
           }
         },
         ( error ) => {

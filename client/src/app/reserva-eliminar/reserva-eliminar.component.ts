@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva-eliminar',
@@ -33,10 +34,34 @@ export class ReservaEliminarComponent implements OnInit {
         estado: 2
       }).subscribe( ( res : any ) => {
         if( res )
-          alert('Reserva eliminada exitosamente');
+        {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'success',
+            title: 'Reserva eliminada exitosamente'
+          });
+        }
         else
-          alert('Ocurrio un error inesperado, intentelo mas tarde');
+        {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'error',
+            title: 'Ocurrio un error inesperado, intentelo mas tarde'
+          });
           this.Reservas = [];
+        }
       },
       ( error ) => {
         console.log( error );

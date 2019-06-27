@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-habitacion-actualizar',
@@ -54,8 +55,21 @@ export class HabitacionActualizarComponent implements OnInit {
         hotelId: this.ActualizarForm.controls.hotelId.value
       }).subscribe( ( res : any) => {
         if( +res == 1)
-          alert('Actualizado correctamente');
+        {
+          let Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+  
+          Toast.fire({
+            type: 'success',
+            title: 'Actualizado correctamente'
+          })
+
           this.LimpiarCampos();
+        } 
       },
       ( error ) => {
         console.log('Error al actualizar');

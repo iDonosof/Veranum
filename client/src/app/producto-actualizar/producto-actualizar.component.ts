@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-actualizar',
@@ -61,7 +62,17 @@ export class ProductoActualizarComponent implements OnInit {
         ubicacion: this.ActualizarProductoForm.controls.ubicacion.value,
         hotelId: this.ActualizarProductoForm.controls.hotel.value
       }).subscribe( ( res : any ) => {
-        alert('Producto actualizado');
+        let Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        Toast.fire({
+          type: 'success',
+          title: 'Producto actualizado'
+        });
         this.CargarHoteles();
         this.CargarProductos();
         this.LimpiarCampos();

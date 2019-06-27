@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgControlStatus, FormGroup } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-usuario-insertar',
@@ -53,11 +54,33 @@ export class UsuarioInsertarComponent implements OnInit {
         empresaId: this.UsuarioInsertarForm.controls.empresaId.value,
       }).subscribe( ( res : any ) => {
         if( +res == 1 ) {
-          alert('Usuario ingresado exitosamente');
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'success',
+            title: 'Usuario ingresado exitosamente'
+          });
           this.LimpiarCampos();
         }
         else
-          alert('Ocurrio un error, intente mas tarde.')
+        {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          
+          Toast.fire({
+            type: 'error',
+            title: 'Ocurrio un error, intente mas tarde.'
+          });
+        }
       },
       ( error ) => {
         console.log( error );
