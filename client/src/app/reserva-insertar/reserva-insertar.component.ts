@@ -29,7 +29,7 @@ export class ReservaInsertarComponent implements OnInit {
     this.ReservaForm = this.formBuilder.group({
       fechaInicio: ['', [Validators.required, Validators.nullValidator]],
       fechaTermino: ['', [Validators.required, Validators.nullValidator]],
-      medioPago: ['', [Validators.required, Validators.min(1), Validators.max(2)]],
+      medioPago: ['', [Validators.required, Validators.min(0), Validators.max(2)]],
       habitacion: ['', [Validators.required, Validators.min(0)]]
     });
   }
@@ -40,6 +40,7 @@ export class ReservaInsertarComponent implements OnInit {
     .subscribe((res:any[]) => {
       this.Habitaciones = res;
       this.ReservaForm.controls.habitacion.setValue(this.Habitaciones[0].ID);
+      this.HabitacionChanged(this.Habitaciones[0].ID);
     }, 
     (error) => {
       console.log(error);

@@ -20,9 +20,9 @@ export class ReservaActualizarComponent implements OnInit {
       fechaInicio: ['', [Validators.required]],
       fechaTermino: ['', [Validators.required]],
       total: ['', Validators.required, Validators.min(0)],
-      medioPago: [0, [Validators.required, Validators.min(1), Validators.max(2)]],
+      medioPago: [0, [Validators.required, Validators.min(0), Validators.max(2)]],
       habitacionId: ['', Validators.required, Validators.min(0)],
-      usuarioId: ['', Validators.required, Validators.min(0)]
+      usuarioId: ['', Validators.required]
     });
     this.ReservaActualizarForm.controls.total.disable();
     this.ReservaActualizarForm.controls.habitacionId.disable();
@@ -33,7 +33,8 @@ export class ReservaActualizarComponent implements OnInit {
 
 
   ActualizarReserva() {
-    if(!this.ReservaActualizarForm) {
+    console.log(this.ReservaActualizarForm);
+    if(!this.ReservaActualizarForm.invalid) {
       if(confirm('¿Seguro que desea actualizar la reserva?')) {
         this.http.post('http://127.0.0.1:3000/actualizarReserva', {
           id: this.ReservaActualizarForm.controls.id.value,
@@ -66,21 +67,32 @@ export class ReservaActualizarComponent implements OnInit {
   }
 
   BuscarReserva() {
-    if(this.ReservaActualizarForm.controls.id.value.trim() != '') {
+    this.Correcto = false;
+    if(this.ReservaActualizarForm.controls.id.value != '') {
       this.http.post('http://127.0.0.1:3000/obtenerReservasPorId', {
         id: this.ReservaActualizarForm.controls.id.value
       }).subscribe( ( res : any[] ) => {
-        this.RellenarDatos( res[0] );
+        if(res.length != 0) {
+          this.RellenarDatos( res[0] );
+        }
+        else {
+          this.Correcto = true;
+        }
       },
       ( error ) => {
         console.log( error );
       });
     }
-    else if(this.ReservaActualizarForm.controls.usuarioId.value.trim() != '') {
+    else if(this.ReservaActualizarForm.controls.usuarioId.value != '') {
       this.http.post('http://127.0.0.1:3000/obtenerReservasPorUsuario', {
         rut: this.ReservaActualizarForm.controls.usuarioId.value
       }).subscribe( ( res : any[] ) => {
-        this.RellenarDatos( res[0] );
+        if(res.length != 0) {
+          this.RellenarDatos( res[0] );
+        }
+        else {
+          this.Correcto = true;
+        }
       },
       ( error ) => {
         console.log( error );
@@ -93,8 +105,8 @@ export class ReservaActualizarComponent implements OnInit {
 
   RellenarDatos( row ) {
     this.ReservaActualizarForm.controls.id.setValue(row.ID);
-    this.ReservaActualizarForm.controls.fechaInicio.setValue(row.FECHA_INICIO);
-    this.ReservaActualizarForm.controls.fechaTermino.setValue(row.FECHA_TERMINO);
+    this.ReservaActualizarForm.controls.fechaInicio.setValue(row.FECHA_INICIO.slice(0,10));
+    this.ReservaActualizarForm.controls.fechaTermino.setValue(row.FECHA_TERMINO.slice(0,10));
     this.ReservaActualizarForm.controls.total.setValue(row.TOTAL);
     this.ReservaActualizarForm.controls.medioPago.setValue(row.MEDIO_PAGO);
     this.ReservaActualizarForm.controls.habitacionId.setValue(row.HABITACIONID);

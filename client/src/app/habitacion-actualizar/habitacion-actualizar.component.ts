@@ -95,8 +95,7 @@ export class HabitacionActualizarComponent implements OnInit {
 
   LimpiarCampos() {
     this.Correcto = false;
-    this.ActualizarForm.controls.id.setValue(this.Habitaciones[0].ID);
-    this.ActualizarForm.controls.numero.setValue('');
+    this.ActualizarForm.controls.numero.setValue(this.Habitaciones[0].ID);
     this.ActualizarForm.controls.capacidad.setValue('');
     this.ActualizarForm.controls.camas.setValue('');
     this.ActualizarForm.controls.banos.setValue('');

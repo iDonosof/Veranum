@@ -75,7 +75,7 @@ const obtenerProductoPorId = function(producto){
 };
 
 const obtenerProductos = function(){
-    let query = "select * from PRODUCTO";
+    let query = "select * from PRODUCTO where PRODUCTO.ESTADO = 1";
     return new Promise((resolve, reject) => {
         con.query(query, (error, result, fields) => {
             if(error){

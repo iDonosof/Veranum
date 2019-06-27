@@ -21,8 +21,8 @@
               <tr *ngFor="let Reserva of Reservas">
                 <th scope="row">{{Reserva.ID}}</th>
                 <td>{{Reserva.HABITACIONID}}</td>
-                <td>{{Reserva.FECHA_INICIO}}</td>
-                <td>{{Reserva.FECHA_TERMINO}}</td>
+                <td>{{Reserva.FECHA_INICIO.slice(0,10)}}</td>
+                <td>{{Reserva.FECHA_TERMINO.slice(0,10)}}</td>
                 <td>{{Reserva.TOTAL}}</td>
                 <td>{{Reserva.USUARIOID}}</td>
               </tr>

@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
       correo: this.SignupGroup.controls.correo.value,
       nombreUsuario: this.SignupGroup.controls.nombreUsuario.value,
       contrasena: this.SignupGroup.controls.contrasena.value,
-      empresaid: this.SignupGroup.controls.empresa.value
+      empresaId: this.SignupGroup.controls.empresa.value
     }).subscribe( ( res : any ) => {
       if( +res == 1){
         this.router.navigate(['Login']);

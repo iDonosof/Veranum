@@ -43,7 +43,6 @@ export class UsuarioActualizarComponent implements OnInit {
   }
 
   ActualizarUsuario() {
-    console.log(this.UsuarioActualizarForm);
     if(!this.UsuarioActualizarForm.invalid) {
       if(confirm('¿Seguro que desea actualizar al usuario?')) {
         this.http.post('http://127.0.0.1:3000/actualizarUsuario', {
@@ -96,19 +95,25 @@ export class UsuarioActualizarComponent implements OnInit {
   }
 
   BuscarUsuario () {
+    this.Correcto = false;
     this.http.post('http://127.0.0.1:3000/obtenerUsuarioPorId', {
       rut: this.UsuarioActualizarForm.controls.rut.value
     }).subscribe( ( res : any ) => {
-      res = res[0];
-      this.UsuarioActualizarForm.controls.rut.setValue(res.RUT);
-      this.UsuarioActualizarForm.controls.nombre.setValue(res.NOMBRE);
-      this.UsuarioActualizarForm.controls.apellido.setValue(res.APELLIDO);
-      this.UsuarioActualizarForm.controls.telefono.setValue(res.TELEFONO);
-      this.UsuarioActualizarForm.controls.direccion.setValue(res.DIRECCION);
-      this.UsuarioActualizarForm.controls.correo.setValue(res.CORREO);
-      this.UsuarioActualizarForm.controls.nombreUsuario.setValue(res.NOMBREUSUARIO);
-      this.UsuarioActualizarForm.controls.contrasena.setValue(res.CONTRASENA);
-      this.UsuarioActualizarForm.controls.empresaId.setValue(res.EMPRESAID == null ? 0 : res.EMPRESAID);
+      if(res.length != 0) {
+        res = res[0];
+        this.UsuarioActualizarForm.controls.rut.setValue(res.RUT);
+        this.UsuarioActualizarForm.controls.nombre.setValue(res.NOMBRE);
+        this.UsuarioActualizarForm.controls.apellido.setValue(res.APELLIDO);
+        this.UsuarioActualizarForm.controls.telefono.setValue(res.TELEFONO);
+        this.UsuarioActualizarForm.controls.direccion.setValue(res.DIRECCION);
+        this.UsuarioActualizarForm.controls.correo.setValue(res.CORREO);
+        this.UsuarioActualizarForm.controls.nombreUsuario.setValue(res.NOMBREUSUARIO);
+        this.UsuarioActualizarForm.controls.contrasena.setValue(res.CONTRASENA);
+        this.UsuarioActualizarForm.controls.empresaId.setValue(res.EMPRESAID == null ? 0 : res.EMPRESAID);
+      }
+      else {
+        this.Correcto = true;
+      }
     },
     ( error ) => {
       console.log( error );

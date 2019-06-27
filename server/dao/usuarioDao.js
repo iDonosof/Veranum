@@ -89,7 +89,7 @@ const obtenerUsuarioPorId = function(usuario){
 };
 
 const obtenerUsuarios = function(){
-    let query = "select * from USUARIO";
+    let query = "select * from USUARIO where USUARIO.ESTADO = 1";
     return new Promise((resolve, reject) => {
         con.query(query, (error, result, fields) => {
             if(error){

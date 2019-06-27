@@ -67,7 +67,6 @@ export class ProductoInsertarComponent implements OnInit {
   CargarHoteles() {
     this.http.get('http://127.0.0.1:3000/obtenerhoteles').subscribe( ( res : any[] ) => {
       this.Hoteles = res;
-      this.InsertarProductoForm.controls.hotelId.setValue(this.Hoteles[0].ID);
     },
     ( error ) => {
       console.log( error );

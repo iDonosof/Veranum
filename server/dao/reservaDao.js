@@ -46,7 +46,7 @@ const actualizarEstadoReserva = function(reserva){
 };
 
 const obtenerReservas = function(){
-    let query = "select * from RESERVA";
+    let query = "select * from RESERVA where RESERVA.ESTADO = 1";
     return new Promise((resolve, reject) => {
         con.query(query, (error, result, fields) => {
             if(error){

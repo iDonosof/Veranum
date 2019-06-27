@@ -35,8 +35,7 @@ export class UsuarioEliminarComponent implements OnInit {
     this.http.post('http://127.0.0.1:3000/obtenerUsuarioPorId', {
       rut: this.UsuarioEliminarForm.controls.rut.value
     }).subscribe( ( res : any[] ) => {
-      if(res) {
-        console.log(res);
+      if(res.length != 0) {
         this.UsuarioEliminarForm.controls.rut.setValue(res[0].RUT);
         this.UsuarioEliminarForm.controls.nombre.setValue(res[0].NOMBRE);
         this.UsuarioEliminarForm.controls.apellido.setValue(res[0].APELLIDO);
