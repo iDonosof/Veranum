@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataManagerService } from '../data-manager.service';
-import { FormBuilder, NgControlStatus, FormGroup } from '@angular/forms';  
+import { FormBuilder, NgControlStatus, FormGroup, Validators } from '@angular/forms';  
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -22,12 +22,15 @@ export class ReservaInsertarComponent implements OnInit {
   //Valor total en pesos chilenos
   valorTotalCLP = 0;
 
+  Correcto : boolean;
+
   constructor(private http: HttpClient, private formBuilder : FormBuilder) {
+    this.Correcto = false;
     this.ReservaForm = this.formBuilder.group({
-      fechaInicio: [''],
-      fechaTermino: [''],
-      medioPago: [''],
-      habitacion: ['']
+      fechaInicio: ['', [Validators.required, Validators.nullValidator]],
+      fechaTermino: ['', [Validators.required, Validators.nullValidator]],
+      medioPago: ['', [Validators.required, Validators.min(1), Validators.max(2)]],
+      habitacion: ['', [Validators.required, Validators.min(0)]]
     });
   }
   
@@ -36,6 +39,7 @@ export class ReservaInsertarComponent implements OnInit {
     this.http.get("http://localhost:3000/obtenerHabitaciones")
     .subscribe((res:any[]) => {
       this.Habitaciones = res;
+      this.ReservaForm.controls.habitacion.setValue(this.Habitaciones[0].ID);
     }, 
     (error) => {
       console.log(error);
@@ -61,21 +65,26 @@ export class ReservaInsertarComponent implements OnInit {
   //*No funciona el post por alguna razon (averigualo)
   //Recurepa los datos del formulario de reserva y los guarda en la base de datos
   AgregarReserva () {
-    this.HabitacionChanged(this.ReservaForm.controls.habitacion.value);
-    this.http.post("http://localhost:3000/crearReserva", {
-      'fechaInicio': this.ReservaForm.controls.fechaInicio.value,
-      'fechaTermino': this.ReservaForm.controls.fechaTermino.value,
-      'total': this.valorTotal,
-      'medioPago': this.ReservaForm.controls.medioPago.value,
-      'habitacionId': +this.ReservaForm.controls.habitacion.value,
-      'usuarioId': localStorage.getItem('rut')
-    })
-    .subscribe((res : any) => {
-      alert('Se agrego la reserva exitosamente');
-    }, 
-    (error) => {
-      console.log(error);
-    })
+    if(!this.ReservaForm.invalid) {
+      this.HabitacionChanged(this.ReservaForm.controls.habitacion.value);
+      this.http.post("http://localhost:3000/crearReserva", {
+        'fechaInicio': this.ReservaForm.controls.fechaInicio.value,
+        'fechaTermino': this.ReservaForm.controls.fechaTermino.value,
+        'total': this.valorTotal,
+        'medioPago': this.ReservaForm.controls.medioPago.value,
+        'habitacionId': +this.ReservaForm.controls.habitacion.value,
+        'usuarioId': localStorage.getItem('rut')
+      })
+      .subscribe((res : any) => {
+        alert('Se agrego la reserva exitosamente');
+      }, 
+      (error) => {
+        console.log(error);
+      });
+    }
+    else {
+      this.Correcto = true;
+    }
   }
 
   HabitacionChanged(e) {

@@ -55,7 +55,12 @@ export class HabitacionInsertarComponent implements OnInit {
   }
 
   LimpiarCampos() {
-    
+    this.HabitacionForm.controls.numero.setValue('');
+    this.HabitacionForm.controls.capacidad.setValue('');
+    this.HabitacionForm.controls.camas.setValue('');
+    this.HabitacionForm.controls.banos.setValue('');
+    this.HabitacionForm.controls.hotelId.setValue(this.Hoteles[0].ID);
+    this.Correcto = false;
   }
 
 }

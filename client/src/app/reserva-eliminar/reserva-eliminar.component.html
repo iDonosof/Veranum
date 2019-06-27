@@ -1,18 +1,20 @@
-
-
 <br>
 <div class="card mb-3">
   <div class="card-header">
     Agregar Reserva</div>
   <div class="card-body">
     <div class="table-responsive">
-        <form [formGroup]="ReservaEliminarForm" (ngSubmit)="BuscarReserva()">
-            <div class="form-group">
-              <label for="rut">Rut cliente</label>
-              <input type="text" class="form-control" name="rut" placeholder="Ingrese rut de la persona sin guión ni digito verificador" formControlName="rut">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+      <form [formGroup]="ReservaEliminarForm" (ngSubmit)="BuscarReserva()">
+        <div class="form-group">
+          <label for="rut">Rut cliente</label>
+          <input type="text" class="form-control" name="rut" placeholder="Ingrese rut de la persona sin guión ni digito verificador" formControlName="rut">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+            &nbsp;
+          <i class="fas fa-exclamation-triangle alert-validation"></i>
+        </a>
+      </form>
           
           <br>
           <br>
@@ -48,3 +50,4 @@
   </div>
   <div class="card-footer small text-muted">Veranum</div>
 </div>
+

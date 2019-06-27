@@ -10,10 +10,12 @@ import { HttpClient } from '@angular/common/http';
 export class UsuarioEliminarComponent implements OnInit {
 
   UsuarioEliminarForm : FormGroup;
+  Correcto : boolean;
 
   constructor( private formBuilder : FormBuilder, private http : HttpClient ) { 
+    this.Correcto = false;
     this.UsuarioEliminarForm = this.formBuilder.group({
-      rut: [''],
+      rut: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
       nombre: new FormControl({value:'', disabled: true}),
       apellido: new FormControl({value:'', disabled: true}),
       telefono: new FormControl({value:'', disabled: true}),
@@ -21,7 +23,7 @@ export class UsuarioEliminarComponent implements OnInit {
       correo: new FormControl({value:'', disabled: true}),
       nombreUsuario: new FormControl({value:'', disabled: true}),
       contrasena: new FormControl({value:'', disabled: true}),
-      empresaId: new FormControl({value: 0, disabled: true}),
+      empresaId: new FormControl({value: '', disabled: true}),
     });
   }
 
@@ -33,6 +35,7 @@ export class UsuarioEliminarComponent implements OnInit {
       rut: this.UsuarioEliminarForm.controls.rut.value
     }).subscribe( ( res : any[] ) => {
       if(res) {
+        console.log(res);
         this.UsuarioEliminarForm.controls.rut.setValue(res[0].RUT);
         this.UsuarioEliminarForm.controls.nombre.setValue(res[0].NOMBRE);
         this.UsuarioEliminarForm.controls.apellido.setValue(res[0].APELLIDO);
@@ -41,7 +44,7 @@ export class UsuarioEliminarComponent implements OnInit {
         this.UsuarioEliminarForm.controls.correo.setValue(res[0].CORREO);
         this.UsuarioEliminarForm.controls.nombreUsuario.setValue(res[0].NOMBREUSUARIO);
         this.UsuarioEliminarForm.controls.contrasena.setValue(res[0].CONTRASENA);
-        this.UsuarioEliminarForm.controls.empresaId.setValue(res[0].EMPRESAID);
+        this.UsuarioEliminarForm.controls.empresaId.setValue(res[0].EMPRESAID == null? 'No pertenece a alguna empresa' : res[0].EMPRESAID);
       }
       else {
         alert('Usuario no encontrado');
@@ -53,22 +56,27 @@ export class UsuarioEliminarComponent implements OnInit {
   }
 
   EliminarUsuario() {
-    if(confirm('¿Esta seguro que desea a eliminar a este usuario?')) {
-      this.http.post('http://127.0.0.1:3000/actualizarEstadoUsuario' ,{
-        rut: this.UsuarioEliminarForm.controls.rut.value,
-        estado: 2
-      }).subscribe( ( res : any ) => {
-        if( +res == 1 ) {
-          alert('Eliminado exitosamente');
-          this.LimpiarCampos();
-        }
-        else {
-          alert('Ocurrio un error, vuelva a intentarlo mas tarde.')
-        }
-      },
-      ( error ) => {
-        console.log( error );
-      });
+    if(!this.UsuarioEliminarForm.invalid) {
+      if(confirm('¿Esta seguro que desea a eliminar a este usuario?')) {
+        this.http.post('http://127.0.0.1:3000/actualizarEstadoUsuario' ,{
+          rut: this.UsuarioEliminarForm.controls.rut.value,
+          estado: 2
+        }).subscribe( ( res : any ) => {
+          if( +res == 1 ) {
+            alert('Eliminado exitosamente');
+            this.LimpiarCampos();
+          }
+          else {
+            alert('Ocurrio un error, vuelva a intentarlo mas tarde.')
+          }
+        },
+        ( error ) => {
+          console.log( error );
+        });
+      }
+    }
+    else {
+      this.Correcto = true;
     }
   }
 
@@ -82,6 +90,7 @@ export class UsuarioEliminarComponent implements OnInit {
     this.UsuarioEliminarForm.controls.nombreUsuario.setValue('');
     this.UsuarioEliminarForm.controls.contrasena.setValue('');
     this.UsuarioEliminarForm.controls.empresaId.setValue('');
+    this.Correcto = false;
   }
 
 }

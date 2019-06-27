@@ -35,12 +35,20 @@
             <div class="form-group">
               <label for="hotel">Hotel</label>
               <select name="hotel" id="hotel" formControlNmae="hotel" class="form-control">
-                <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
+              <option *ngFor="let Hotel of Hoteles" value={{Hotel.ID}}>{{Hotel.DIRECCION}}</option>
               </select>
             </div>
             <input type="submit" class="btn btn-primary" value="Actualizar">
-          </form>
+            <a data-toggle="tooltip" title="Un campo del formulario esta incorrecto" *ngIf="Correcto">
+              &nbsp;
+              <i class="fas fa-exclamation-triangle alert-validation"></i>
+            </a>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
+<div class="card-footer small text-muted">Veranum</div>
+</div>
+
+        
