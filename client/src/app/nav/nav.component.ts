@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  private usd;
-  private weather;
+  usd : any;
+  weather : any;
   user = {
     username: null,
     rut: null,
