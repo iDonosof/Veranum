@@ -1,27 +1,30 @@
-# Veranum
+# Nombre
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Veranum Client
 
-## Development server
+## Instalación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Instalamos [Node](https://nodejs.org/es/download) utilizando la version 10.24.1.
 
-## Code scaffolding
+2. Debemos instalar [Angular CLI](https://www.npmjs.com/package/@angular/cli/v/7.3.9) version 7.3.8 como global para poder levantar el proyecto, para poder instalarlo, ejecutamos el siguiente comando
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```shell
+npm i -g @angular/cli@7.3.9
+```
 
-## Build
+## Uso
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Ejecutar `npm start` para iniciar un servidor de desarrollo. Una vez levantado ir a la direccion [http://localhost:4200/](http://localhost:4200/) en el navegador. La aplicacion se reiniciara automaticamente cuando detecte cualquier cambio en los archivos
 
-## Running unit tests
+2. Ejecutar `npm run build` para generar el "build" que servira para desplegar la aplicacion a producción
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Ejecutar `npm test` para ejecutar las pruebas del proyecto
 
-## Running end-to-end tests
+4. Ejecutar `npm run lint` para formatear el codigo
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+5. Ejecutar `npm run e2e` para ejecutar las pruebas e2e
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Consideracion
+
+1. Este projecto consume directamente la API de la carpeta **server** creada con node, para poder ejecutar este proyecto es necesario ejecutar el servidor primero
