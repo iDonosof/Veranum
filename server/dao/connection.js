@@ -4,7 +4,7 @@ const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "asd123asd",
-    port: 33060,
+    port: 3306,
     database: "VERANUM",
 });
 
