@@ -151,12 +151,6 @@ namespace Desktop.Presentation
 
         void CargarPrecios()
         {
-<<<<<<< HEAD
-            int habId = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString());
-            PrecioDia precio = new PrecioDia();
-            Precios.Clear();
-            foreach (PrecioDia pre in precio.ObtenerPrecioDiaPorFechaYHabitacionId(DateTime.Now, habId))
-=======
             try
             {
                 PrecioDia precio = new PrecioDia();
@@ -168,7 +162,6 @@ namespace Desktop.Presentation
                 dtgPrecioDia.ItemsSource = Precios;
             }
             catch (Exception ex)
->>>>>>> master
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -176,14 +169,7 @@ namespace Desktop.Presentation
 
         void CargarPromociones()
         {
-<<<<<<< HEAD
-            var habId = int.Parse(((ComboBoxItem)cbHabPromo.SelectedItem).Tag.ToString()); ;
-            Promocion promocion = new Promocion();
-            Promociones.Clear();
-            foreach (Promocion promo in promocion.ObtenerHabitacionPorId(habId))
-=======
             try
->>>>>>> master
             {
                 Promocion promocion = new Promocion();
                 Promociones.Clear();
@@ -259,14 +245,6 @@ namespace Desktop.Presentation
         {
             try
             {
-<<<<<<< HEAD
-                Direccion = txtDirecHotel.Text,
-                Region = txtRegionHotel.Text,
-                Telefono = int.Parse(txtHotelTelefono.Text),
-                Administrador = _usuario.Rut
-            };
-            if(!hotel.CrearHotel(hotel))
-=======
                 var hotel = new Hotel
                 {
                     Direccion = txtDirecHotel.Text,
@@ -280,7 +258,6 @@ namespace Desktop.Presentation
                 }
             }
             catch (Exception ex)
->>>>>>> master
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -338,21 +315,7 @@ namespace Desktop.Presentation
                     MessageBox.Show("No se pudo agregar producto");
                 }
             }
-<<<<<<< HEAD
-            var prod = new Producto
-            {
-                Descripcion = txtProdDesc.Text,
-                HotelID = hotelId,
-                Nombre = txtProdNombre.Text,
-                StockDisponible = int.Parse(txtStockDispo.Text),
-                StockTotal = int.Parse(txtStockTotal.Text),
-                Ubicacion = txtUbiacion.Text,
-                Estado = chkProdEstado.IsChecked.Value ? true : false
-            };
-            if(!prod.CrearProducto(prod))
-=======
             catch (Exception ex)
->>>>>>> master
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -384,20 +347,7 @@ namespace Desktop.Presentation
             }
             catch (Exception ex)
             {
-<<<<<<< HEAD
-                Banos = int.Parse(txtBanos.Text),
-                Camas = int.Parse(txtCamas.Text),
-                Capacidad = int.Parse(txtCapacidad.Text),
-                Numero = int.Parse(txtHabNum.Text),
-                HotelId = hotelId,
-                Estado = chkHabEstado.IsChecked.Value ? true : false
-            };
-            if(!hab.CrearHabitacion(hab))
-            {
-                MessageBox.Show("No se pudo agregar habitacion");
-=======
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
->>>>>>> master
             }
             
         }
@@ -406,14 +356,6 @@ namespace Desktop.Presentation
         {
             try
             {
-<<<<<<< HEAD
-                Descripcion = txtDescSer.Text,
-                HotelID = hotelId,
-                Nombre = txtNombreSer.Text,
-                Estado = chkSerEstado.IsChecked.Value ? true : false
-            };
-            if(!ser.CrearServicio(ser))
-=======
                 var ser = new Servicio
                 {
                     Descripcion = txtDescSer.Text,
@@ -426,8 +368,7 @@ namespace Desktop.Presentation
                     MessageBox.Show("No se pudo agregar servicio");
                 }
             }
-            catch (Exception)
->>>>>>> master
+            catch (Exception ex)
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -455,18 +396,7 @@ namespace Desktop.Presentation
                     MessageBox.Show("No se pudo agregar precio");
                 }
             }
-<<<<<<< HEAD
-            var precio = new PrecioDia
-            {
-                Fecha = DateTime.Parse(dtPrecioDia.Text),
-                Precio = int.Parse(txtPrecio.Text),
-                HabitacionID = int.Parse(((ComboBoxItem)cbHabPrecio.SelectedItem).Tag.ToString()),
-               
-            };
-            if(!precio.CrearPrecioDia(precio))
-=======
-            catch (Exception)
->>>>>>> master
+            catch (Exception ex)
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -494,7 +424,7 @@ namespace Desktop.Presentation
                     MessageBox.Show("No se pudo agregar promocion");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("ocurrio un error " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

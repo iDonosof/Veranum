@@ -59,7 +59,7 @@ namespace Desktop.Data
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -114,7 +114,7 @@ namespace Desktop.Data
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
